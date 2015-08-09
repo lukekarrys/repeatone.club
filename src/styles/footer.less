@@ -6,21 +6,15 @@ footer {
   width: 100%;
   text-align: center;
   padding: 20px 0;
-  background-color: rgba(0,0,0,0.4);
-  color: #fff;
-  box-shadow: inset 1px 5px 9px -6px @black;
+  color: @white;
 
-  ul {
-    margin: 0;
-    li {
-      display: inline;
-
-      &:last-child:after {
-        content: '';
-      }
-
-      &:after {
-        content: ' | ';
+  .btn {
+    &:link,
+    &:visited {
+      margin-bottom: 0;
+      margin-right: 5px;
+      &:last-child {
+        margin-right: 0;
       }
     }
   }

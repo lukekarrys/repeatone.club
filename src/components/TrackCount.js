@@ -3,6 +3,9 @@
 import React, {Component, PropTypes} from 'react';
 import {last} from 'lodash';
 
+require('../styles/background.less');
+require('../styles/track-count.less');
+
 export default class TrackCount extends Component {
   static propTypes = {
     count: PropTypes.number.isRequired,
@@ -24,13 +27,13 @@ export default class TrackCount extends Component {
             <div className='shadow' />
             <img src={albumCover} />
           </div>
-          <span className='description'>
+          <div className='description'>
             <a href={`http://www.last.fm/user/${user}`}>{user}</a> has listened to
             {' '}
             <a href={url}>{name} by {artistName}</a>
             {' '}
             <span className='count'>{count}</span> times in a row
-          </span>
+          </div>
         </div>
       </div>
     );

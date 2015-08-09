@@ -2,7 +2,8 @@
 
 import React, {Component, PropTypes} from 'react';
 
-import TrackCount from './TrackCount';
+import TrackCount from '../components/TrackCount';
+import Loading from '../components/Loading';
 import api from '../helpers/api';
 
 export default class User extends Component {
@@ -52,7 +53,7 @@ export default class User extends Component {
 
     if (loading) {
       return (
-        <div>Loading...</div>
+        <Loading />
       );
     }
 

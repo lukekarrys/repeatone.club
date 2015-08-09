@@ -2,6 +2,8 @@
 
 import React, {Component, PropTypes} from 'react';
 
+import Footer from './Footer';
+
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired
@@ -10,13 +12,10 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        {this.props.children}
-        <footer>
-          <ul>
-            <li><a href='https://github.com/lukekarrys/repeatone'>GitHub</a></li>
-            <li>by <a href='https://twitter.com/lukekarrys'>@lukekarrys</a></li>
-          </ul>
-        </footer>
+        <div className='main'>
+          {this.props.children}
+        </div>
+        <Footer />
       </div>
     );
   }

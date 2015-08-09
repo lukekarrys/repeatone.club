@@ -10,6 +10,13 @@ const api = (user, cb) =>
     uri: uri(user),
     json: true,
     useXDR: true
-  }, (err, resp, body) => cb(err, body));
+  }, (__, resp, body) => {
+    if (resp.statusCode !== 200) {
+      cb(new Error(body.message));
+    }
+    else {
+      cb(null, body);
+    }
+  });
 
 export default api;
