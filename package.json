@@ -1,6 +1,6 @@
 {
   "name": "repeatone",
-  "description": "A web interface to see if a lastfm user is listenting to a song on repeat.",
+  "description": "See if a lastfm user is listenting to a song on repeat.",
   "version": "1.0.0",
   "author": "Luke Karrys <luke@lukekarrys.com>",
   "bugs": {
@@ -57,9 +57,10 @@
     "url": "git+ssh://git@github.com/lukekarrys/repeatone.git"
   },
   "scripts": {
+    "build": "webpack",
+    "deploy": "git-directory-deploy --directory public/",
     "lint": "eslint .",
     "start": "webpack-dev-server",
-    "build": "webpack",
     "validate": "npm ls"
   }
 }
