@@ -1,0 +1,65 @@
+{
+  "name": "repeatone",
+  "description": "A web interface to see if a lastfm user is listenting to a song on repeat.",
+  "version": "1.0.0",
+  "author": "Luke Karrys <luke@lukekarrys.com>",
+  "bugs": {
+    "url": "https://github.com/lukekarrys/repeatone/issues"
+  },
+  "dependencies": {
+    "colors.css": "^2.3.0",
+    "lodash": "^3.10.1",
+    "normalize.css": "^3.0.3",
+    "react": "^0.13.3",
+    "react-router": "^1.0.0-beta3",
+    "xhr": "^2.0.3"
+  },
+  "devDependencies": {
+    "autoprefixer-core": "^5.2.1",
+    "babel": "^5.8.21",
+    "babel-core": "^5.8.21",
+    "babel-eslint": "^4.0.5",
+    "babel-loader": "^5.3.2",
+    "babel-runtime": "^5.8.20",
+    "css-loader": "^0.15.6",
+    "eslint": "^1.1.0",
+    "eslint-plugin-react": "^3.2.1",
+    "file-loader": "^0.8.4",
+    "git-directory-deploy": "^1.1.0",
+    "hjs-webpack": "^2.12.2",
+    "json-loader": "^0.5.2",
+    "less": "^2.5.1",
+    "less-loader": "^2.2.0",
+    "postcss-loader": "^0.5.1",
+    "precommit-hook": "^3.0.0",
+    "react-hot-loader": "^1.2.8",
+    "style-loader": "^0.12.3",
+    "stylus-loader": "^1.2.1",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1",
+    "yeticss": "^7.0.3"
+  },
+  "homepage": "https://github.com/lukekarrys/repeatone#readme",
+  "keywords": [
+    "lastfm",
+    "repeatone"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "pre-commit": [
+    "lint",
+    "validate"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lukekarrys/repeatone.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "validate": "npm ls"
+  }
+}

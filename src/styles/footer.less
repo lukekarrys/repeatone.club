@@ -1,0 +1,27 @@
+@import '../../node_modules/colors.css/less/_variables.less';
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  background-color: rgba(0,0,0,0.4);
+  color: #fff;
+  box-shadow: inset 1px 5px 9px -6px @black;
+
+  ul {
+    margin: 0;
+    li {
+      display: inline;
+
+      &:last-child:after {
+        content: '';
+      }
+
+      &:after {
+        content: ' | ';
+      }
+    }
+  }
+}

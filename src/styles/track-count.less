@@ -1,0 +1,30 @@
+@import '../../node_modules/colors.css/less/_variables.less';
+
+@album-cover-size: 300px;
+
+.track-count {
+  text-align: center;
+}
+
+.album-cover {
+  position: relative;
+  height: @album-cover-size;
+  width: @album-cover-size;
+  overflow: hidden;
+  margin: 10% auto 0;
+
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0px 0px 11px -2px @black;
+  }
+
+  img {
+    height: @album-cover-size;
+    width: @album-cover-size;
+    background: #ccc;
+  }
+}

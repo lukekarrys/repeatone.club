@@ -1,0 +1,16 @@
+@background-offset: 15%;
+
+.background {
+  position: absolute;
+  top: @background-offset * -1;
+  bottom: @background-offset * -1;
+  left: @background-offset * -1;
+  right: @background-offset * -1;
+  filter: blur(40px);
+  width: 100% + (@background-offset * 2);
+  height: 100% + (@background-offset * 2);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: -1;
+}
