@@ -10,14 +10,15 @@ export default class TrackCount extends Component {
   static propTypes = {
     count: PropTypes.number.isRequired,
     track: PropTypes.object.isRequired,
-    user: PropTypes.string.isRequired
+    user: PropTypes.string.isRequired,
+    base64: PropTypes.string
   }
 
   render () {
-    const {count, track, user} = this.props;
+    const {count, track, user, base64} = this.props;
     const {name, url, image, artist} = track;
     const artistName = artist['#text'];
-    const albumCover = last(image)['#text'];
+    const albumCover = base64 || last(image)['#text'];
 
     return (
       <div>

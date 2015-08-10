@@ -1,6 +1,7 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
+import assign from 'lodash/object/assign';
 
 import TrackCount from '../components/TrackCount';
 import Loading from '../components/Loading';
@@ -14,6 +15,8 @@ export default class User extends Component {
   state = {
     count: null,
     track: null,
+    user: null,
+    base64: null,
     loading: false,
     error: null
   }
@@ -31,19 +34,13 @@ export default class User extends Component {
     if (user) {
       this.setState({loading: true});
       api(user, (err, data) => {
-        this.setState({
-          error: err,
-          user: data ? data.user : null,
-          track: data ? data.track : null,
-          count: data ? data.count : null,
-          loading: false
-        });
+        this.setState(assign({error: err, loading: false}, data));
       });
     }
   }
 
   render () {
-    const {error, loading, count, track, user} = this.state;
+    const {error, loading, count, track, base64, user} = this.state;
 
     if (error) {
       return (
@@ -57,14 +54,14 @@ export default class User extends Component {
       );
     }
 
-    if (count === null || track === null) {
+    if (!count || !track) {
       return (
         <div>That user isn't listening to anything on repeat</div>
       );
     }
 
     return (
-      <TrackCount count={count} track={track} user={user} />
+      <TrackCount count={count} track={track} user={user} base64={base64} />
     );
   }
 }
