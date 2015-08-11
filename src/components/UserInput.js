@@ -15,7 +15,7 @@ class UserInput extends Component {
     e.preventDefault();
     const {username} = this.state;
     if (!username) return;
-    this.transitionTo(`/user/${username}`);
+    this.transitionTo(`/${username}`);
   }
 
   handleUsername = (e) => {

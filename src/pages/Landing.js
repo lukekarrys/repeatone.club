@@ -10,7 +10,7 @@ export default class Landing extends Component {
     return (
       <div>
         <UserInput />
-        <p>Or <Link to='/user/formatfanatic'>check me out</Link>.</p>
+        <p>Or <Link to='/formatfanatic'>check me out</Link>.</p>
       </div>
     );
   }

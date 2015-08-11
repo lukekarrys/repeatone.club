@@ -4,6 +4,8 @@ import React, {Component, PropTypes} from 'react';
 
 import Footer from './components/Footer';
 
+require('./styles/app.less');
+
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired

@@ -33,6 +33,7 @@ export default class User extends Component {
   fetch (props) {
     const {user} = props.params;
     if (user) {
+      this.setState({loading: true});
       api(user, (err, data) => {
         this.setState(assign({error: err, loading: false}, data));
       });
