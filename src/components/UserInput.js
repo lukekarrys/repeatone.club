@@ -24,17 +24,14 @@ class UserInput extends Component {
 
   render () {
     return (
-      <div>
-        <form className='user-input' onSubmit={this.handleSubmit}>
-          <input
-            className='inpt inpt--full'
-            type='text'
-            placeholder='Find user'
-            value={this.state.username}
-            onChange={this.handleUsername}
-          />
-        </form>
-      </div>
+      <form className='user-input' onSubmit={this.handleSubmit}>
+        <input
+          type='text'
+          placeholder='Find user'
+          value={this.state.username}
+          onChange={this.handleUsername}
+        />
+      </form>
     );
   }
 }

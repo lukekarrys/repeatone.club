@@ -2,7 +2,7 @@
 
 import React, {Component, PropTypes} from 'react';
 
-require('../styles/album-cover.less');
+require('../../styles/album-cover.less');
 
 export default class AlbumCover extends Component {
   static propTypes = {

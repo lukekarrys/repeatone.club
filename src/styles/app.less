@@ -5,25 +5,28 @@
   box-sizing: border-box;
 }
 
-body, html {
-  height: 100%;
-  width: 100%;
+body {
   font-family: 'helvetica neue', helvetica, arial, sans-serif;
   color: @black;
-}
-
-.main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  height: 100%;
-  width: 100%;
   text-align: center;
 }
 
+.main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .center-content {
+  margin: 20px 0;
+  display: flex;
   flex: 1;
+  align-items: center;
+  justify-content: center;
+  & > div {
+    flex: 1;
+  }
 }
 
 a {

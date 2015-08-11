@@ -8,4 +8,3 @@ See if a lastfm user is listening to a song on repeat.
 - Try react-blur now that api image is base64 str
 - Move to all radium for all component styles
 - Flux to communicate footer icon color light/dark
-- Use sticky footer

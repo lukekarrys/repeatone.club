@@ -3,7 +3,7 @@
 import React from 'react';
 import {Route} from 'react-router';
 
-import App from './components/App';
+import App from './App';
 import Landing from './pages/Landing';
 import User from './pages/User';
 import NotFound from './pages/NotFound';

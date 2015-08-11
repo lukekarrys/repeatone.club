@@ -4,7 +4,7 @@ import React, {Component, PropTypes} from 'react';
 import assign from 'lodash/object/assign';
 
 import Error from '../components/Error';
-import TrackCount from '../components/TrackCount';
+import Track from '../components/track/Track';
 import Loading from '../components/Loading';
 import api from '../helpers/api';
 
@@ -61,7 +61,7 @@ export default class User extends Component {
     }
 
     return (
-      <TrackCount {...{count, track, user, base64}} />
+      <Track {...{count, track, user, base64}} />
     );
   }
 }

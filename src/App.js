@@ -2,7 +2,7 @@
 
 import React, {Component, PropTypes} from 'react';
 
-import Footer from './Footer';
+import Footer from './components/Footer';
 
 export default class App extends Component {
   static propTypes = {
@@ -11,11 +11,9 @@ export default class App extends Component {
 
   render () {
     return (
-      <div>
-        <div className='main'>
-          <div className='center-content'>
-            {this.props.children}
-          </div>
+      <div className='main'>
+        <div className='center-content'>
+          {this.props.children}
         </div>
         <Footer />
       </div>
