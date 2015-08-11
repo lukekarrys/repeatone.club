@@ -1,7 +1,5 @@
 @import '../../node_modules/colors.css/less/_variables.less';
 
-@album-cover-size: 300px;
-
 .track-count {
   text-align: center;
 }
@@ -9,30 +7,5 @@
 .description {
   padding: 20px;
   margin-top: 20px;
-  background: fade(@white, 80);
   box-shadow: inset 1px 5px 9px -6px @black, inset 1px -5px 9px -7px @black;
-}
-
-.album-cover {
-  position: relative;
-  height: @album-cover-size;
-  width: @album-cover-size;
-  overflow: hidden;
-  margin: 0 auto;
-
-  .shadow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: inset 0px 0px 11px -2px @black;
-    border: 1px solid fade(@black, 50);
-  }
-
-  img {
-    height: @album-cover-size;
-    width: @album-cover-size;
-    background: #ccc;
-  }
 }

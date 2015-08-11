@@ -1,16 +1,27 @@
 @background-offset: 15%;
 
 .background {
+  height: 100%;
+  width: 100%;
   position: absolute;
-  top: @background-offset * -1;
-  bottom: @background-offset * -1;
-  left: @background-offset * -1;
-  right: @background-offset * -1;
-  filter: blur(40px);
-  width: 100% + (@background-offset * 2);
-  height: 100% + (@background-offset * 2);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
   z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+
+  & > div {
+    position: absolute;
+    top: @background-offset * -1;
+    bottom: @background-offset * -1;
+    left: @background-offset * -1;
+    right: @background-offset * -1;
+    filter: blur(40px);
+    width: 100% + (@background-offset * 2);
+    height: 100% + (@background-offset * 2);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
 }

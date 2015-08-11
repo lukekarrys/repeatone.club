@@ -13,7 +13,9 @@ export default class App extends Component {
     return (
       <div>
         <div className='main'>
-          {this.props.children}
+          <div className='center-content'>
+            {this.props.children}
+          </div>
         </div>
         <Footer />
       </div>

@@ -8,6 +8,7 @@ module.exports = require('hjs-webpack')({
   html: function html (context) {
     return {
       'index.html': context.defaultTemplate(),
+      '200.html': context.defaultTemplate(),
       'CNAME': 'repeatone.lukekarrys.com'
     };
   }

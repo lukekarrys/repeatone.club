@@ -1,0 +1,37 @@
+@import '../../node_modules/colors.css/less/_variables.less';
+
+@album-cover-size: 300px;
+
+.album-cover {
+  position: relative;
+  height: @album-cover-size;
+  width: @album-cover-size;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: @gray;
+
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0px 0px 11px -2px @black;
+  }
+
+  .text-cover {
+    transform: rotate(-30deg);
+    padding: 10px;
+    flex: 1;
+    .artist {font-size: 2em;}
+    .album {font-size: 1em;}
+  }
+
+  img {
+    height: @album-cover-size;
+    width: @album-cover-size;
+  }
+}

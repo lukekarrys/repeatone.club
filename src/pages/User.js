@@ -3,6 +3,7 @@
 import React, {Component, PropTypes} from 'react';
 import assign from 'lodash/object/assign';
 
+import Error from '../components/Error';
 import TrackCount from '../components/TrackCount';
 import Loading from '../components/Loading';
 import api from '../helpers/api';
@@ -17,7 +18,7 @@ export default class User extends Component {
     track: null,
     user: null,
     base64: null,
-    loading: false,
+    loading: true,
     error: null
   }
 
@@ -32,7 +33,6 @@ export default class User extends Component {
   fetch (props) {
     const {user} = props.params;
     if (user) {
-      this.setState({loading: true});
       api(user, (err, data) => {
         this.setState(assign({error: err, loading: false}, data));
       });
@@ -44,7 +44,7 @@ export default class User extends Component {
 
     if (error) {
       return (
-        <div>{error.message}</div>
+        <Error message={error.message} />
       );
     }
 
@@ -56,12 +56,12 @@ export default class User extends Component {
 
     if (!count || !track) {
       return (
-        <div>That user isn't listening to anything on repeat</div>
+        <Error message='That user has not listened to anything yet.' />
       );
     }
 
     return (
-      <TrackCount count={count} track={track} user={user} base64={base64} />
+      <TrackCount {...{count, track, user, base64}} />
     );
   }
 }

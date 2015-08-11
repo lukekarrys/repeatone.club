@@ -7,12 +7,15 @@
     "url": "https://github.com/lukekarrys/repeatone/issues"
   },
   "dependencies": {
-    "btns": "^1.0.1",
+    "color": "^0.10.1",
+    "color-luminance": "^2.1.0",
     "colors.css": "^2.3.0",
     "css-spinners": "jlong/css-spinners#bc2ed648812b4011e4d425f11b0d3deeb4f42795",
     "lodash": "^3.10.1",
     "normalize.css": "^3.0.3",
+    "radium": "^0.13.7",
     "react": "^0.13.3",
+    "react-mixin": "^1.7.0",
     "react-router": "^1.0.0-beta3",
     "xhr": "^2.0.3"
   },
@@ -26,8 +29,8 @@
     "css-loader": "^0.15.6",
     "eslint": "^1.1.0",
     "eslint-plugin-react": "^3.2.1",
+    "exports-loader": "^0.6.2",
     "file-loader": "^0.8.4",
-    "git-directory-deploy": "^1.1.0",
     "hjs-webpack": "^2.12.2",
     "json-loader": "^0.5.2",
     "less": "^2.5.1",
@@ -37,6 +40,7 @@
     "react-hot-loader": "^1.2.8",
     "style-loader": "^0.12.3",
     "stylus-loader": "^1.2.1",
+    "surge": "^0.14.3",
     "url-loader": "^0.5.6",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1",
@@ -60,7 +64,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "deploy": "git-directory-deploy --directory public/",
+    "deploy": "surge --project public/",
     "lint": "eslint .",
     "start": "webpack-dev-server",
     "validate": "npm ls"
