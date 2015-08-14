@@ -59,9 +59,7 @@ const config = webpackConfig({
 });
 
 config.postcss.push(cssnano({
-  comments: {
-    removeAll: true
-  },
+  comments: {removeAll: true},
   idents: false
 }));
 
