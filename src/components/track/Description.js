@@ -6,7 +6,6 @@ import random from 'lodash/number/random';
 
 import colors from '../../helpers/base64ToColors';
 
-require('../../../node_modules/animate.css/source/_base.css');
 require('../../../node_modules/animate.css/source/sliding_entrances/slideInLeft.css');
 require('../../styles/track-description.less');
 

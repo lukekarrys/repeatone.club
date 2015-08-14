@@ -31,6 +31,7 @@
     "babel-loader": "^5.3.2",
     "babel-runtime": "^5.8.20",
     "css-loader": "^0.15.6",
+    "cssnano": "^2.2.0",
     "eslint": "^1.1.0",
     "eslint-plugin-arrow-function": "^1.0.1",
     "eslint-plugin-classes": "0.0.4",
@@ -52,7 +53,7 @@
     "webpack-dev-server": "^1.10.1",
     "yeticss": "^7.0.3"
   },
-  "homepage": "https://github.com/lukekarrys/repeatone#readme",
+  "homepage": "http://repeatone.lukekarrys.com",
   "keywords": [
     "lastfm",
     "repeatone"
@@ -69,10 +70,11 @@
     "url": "git+ssh://git@github.com/lukekarrys/repeatone.git"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "npm run webpack-config && webpack",
     "deploy": "surge --project public/",
-    "lint": "eslint .",
-    "start": "webpack-dev-server",
-    "validate": "npm ls"
+    "lint": "eslint --ignore-path .gitignore --ext .js,.es6 .",
+    "start": "npm run webpack-config && webpack-dev-server",
+    "validate": "npm ls",
+    "webpack-config": "babel webpack.config.es6 --out-file webpack.config.js"
   }
 }

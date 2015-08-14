@@ -4,6 +4,8 @@ import React, {Component, PropTypes} from 'react';
 
 import Footer from './components/Footer';
 
+require('normalize.css');
+require('animate.css/source/_base.css');
 require('./styles/app.less');
 
 export default class App extends Component {

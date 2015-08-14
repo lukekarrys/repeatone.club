@@ -2,7 +2,6 @@
 
 import React, {Component, PropTypes} from 'react';
 
-require('../../../node_modules/animate.css/source/_base.css');
 require('../../../node_modules/animate.css/source/fading_entrances/fadeIn.css');
 require('../../styles/background.less');
 
