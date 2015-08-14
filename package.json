@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "animate.css": "^3.4.0",
+    "bows": "^1.4.8",
     "color": "^0.10.1",
     "color-luminance": "^2.1.0",
     "colors.css": "^2.3.0",
