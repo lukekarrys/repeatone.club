@@ -36,6 +36,7 @@ const manifest = (ctx) => {
     NETWORK:
     *
     http://*
+    https://*
   `.replace(/^\s*/gm, '');
 };
 
@@ -44,6 +45,7 @@ const config = webpackConfig({
   out: 'public',
   clearBeforeBuild: true,
   output: {hash: true},
+  hostname: 'lukekarrys.local',
   html: function html (ctx) {
     const {isDev} = ctx;
     const indexName = isDev ? 'index.html' : '200.html';

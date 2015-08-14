@@ -4,28 +4,10 @@ import React, {Component, PropTypes} from 'react';
 import Radium from 'radium';
 import random from 'lodash/number/random';
 
-import colors from '../../helpers/base64ToColors';
+import getStyles from '../../helpers/base64ToColors';
 
 require('../../../node_modules/animate.css/source/sliding_entrances/slideInLeft.css');
 require('../../styles/track-description.less');
-
-const getColors = (img, darkBg) => {
-  const styleColors = colors(img, darkBg);
-  return {
-    background: {
-      'backgroundColor': styleColors.background
-    },
-    text: {
-      color: styleColors.text
-    },
-    link: {
-      color: styleColors.link,
-      ':hover': {
-        color: styleColors.linkHover
-      }
-    }
-  };
-};
 
 @Radium
 export default class Description extends Component {
@@ -37,14 +19,21 @@ export default class Description extends Component {
   }
 
   state = {
-    darkBg: random()
+    darkBg: random(),
+    style: null
+  }
+
+  componentDidMount () {
+    getStyles(this.props.base64, !!this.state.darkBg, (style) => this.setState({style}));
   }
 
   render () {
-    const {count, track, user, base64} = this.props;
+    const {style} = this.state;
+    if (!style) return null;
+
+    const {count, track, user} = this.props;
     const {name, url, artist} = track;
     const artistName = artist['#text'];
-    const style = getColors(base64, !!this.state.darkBg);
 
     return (
       <div style={style.background} className='description'>
