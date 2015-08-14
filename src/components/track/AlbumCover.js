@@ -2,6 +2,8 @@
 
 import React, {Component, PropTypes} from 'react';
 
+require('../../../node_modules/animate.css/source/_base.css');
+require('../../../node_modules/animate.css/source/sliding_entrances/slideInDown.css');
 require('../../styles/album-cover.less');
 
 export default class AlbumCover extends Component {
@@ -13,7 +15,7 @@ export default class AlbumCover extends Component {
   render () {
     const {base64, track} = this.props;
     return (
-      <div className='album-cover'>
+      <div className='album-cover animated slideInDown'>
         <div className='shadow' />
         {base64 ?
           <img src={base64} /> :

@@ -6,6 +6,8 @@ import Radium from 'radium';
 import Color from '../../helpers/base64ToColor';
 import colors from 'colors.css';
 
+require('../../../node_modules/animate.css/source/_base.css');
+require('../../../node_modules/animate.css/source/sliding_entrances/slideInLeft.css');
 require('../../styles/track-description.less');
 
 const getColors = (img) => {
@@ -48,14 +50,16 @@ export default class Description extends Component {
 
     return (
       <div style={style.background} className='description'>
-        <a style={style.link} key='userLink' href={`http://www.last.fm/user/${user}`}>{user}</a>
-        {' '}
-        {count > 1 ? 'has listened to' : 'isn\'t listening to anything on repeat but is currently listening to'}
-        {' '}
-        <a style={style.link} key='trackLink' href={url}>{name} by {artistName}</a>
-        {count > 1 ? ' on repeat ' : null}
-        {count > 1 ? <span className='count'>{count}</span> : null}
-        {count > 1 ? ' times' : null}
+        <div className='description-text animated slideInLeft'>
+          <a style={style.link} key='userLink' href={`http://www.last.fm/user/${user}`}>{user}</a>
+          {' '}
+          {count > 1 ? 'has listened to' : 'isn\'t listening to anything on repeat but is currently listening to'}
+          {' '}
+          <a style={style.link} key='trackLink' href={url}>{name} by {artistName}</a>
+          {count > 1 ? ' on repeat ' : null}
+          {count > 1 ? <span className='count'>{count}</span> : null}
+          {count > 1 ? ' times' : null}
+        </div>
       </div>
     );
   }
