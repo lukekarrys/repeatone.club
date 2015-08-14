@@ -10,7 +10,7 @@ require('../../styles/track-description.less');
 
 const getColors = (img) => {
   const color = Color(img);
-  const styles =  {
+  const styles = {
     background: {
       'backgroundColor': colors.gray
     },

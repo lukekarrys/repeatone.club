@@ -1,3 +1,5 @@
+/* global Image */
+
 'use strict';
 
 import Color from 'color';
