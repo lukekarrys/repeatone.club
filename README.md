@@ -10,6 +10,7 @@ See if a last.fm user is listening to a song on repeat.
 ## Usage
 
 ### Dev
+
 ```
 npm install
 npm start

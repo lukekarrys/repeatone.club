@@ -1,13 +1,12 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import Radium from 'radium';
 
+import loadImage from '../../helpers/loadImage';
 import Background from './Background';
 import AlbumCover from './AlbumCover';
 import Description from './Description';
 
-@Radium
 export default class Track extends Component {
   static propTypes = {
     count: PropTypes.number.isRequired,
@@ -16,14 +15,46 @@ export default class Track extends Component {
     base64: PropTypes.string
   }
 
+  state = {
+    hasImage: false,
+    image: null
+  }
+
+  componentDidMount () {
+    this.loadImage(this.props.base64);
+  }
+
+  componentWillReceiveProps (props) {
+    this.loadImage(props.base64);
+  }
+
+  loadImage (base64) {
+    if (base64) {
+      loadImage(this.props.base64, (err, image) => {
+        if (err) {
+          this.setState({hasImage: true, image: null});
+        }
+        else {
+          this.setState({hasImage: true, image});
+        }
+      });
+    }
+    else {
+      this.setState({hasImage: false, image: null});
+    }
+  }
+
   render () {
-    const {count, track, user, base64} = this.props;
+    const {image, hasImage} = this.state;
+    const {count, track, user} = this.props;
+
+    if (hasImage === false) return null;
 
     return (
       <div>
-        <Background {...{base64}} />
-        <AlbumCover {...{base64, track}} />
-        <Description {...{count, track, user, base64}} />
+        <Background {...{image}} />
+        <AlbumCover {...{image, track}} />
+        <Description {...{count, track, user, image}} />
       </div>
     );
   }

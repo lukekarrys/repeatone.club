@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 
-require('../../node_modules/css-spinners/css/spinner/gauge.css');
+require('css-spinners/css/spinner/gauge.css');
 require('../styles/loading.less');
 
 export default class Loading extends Component {

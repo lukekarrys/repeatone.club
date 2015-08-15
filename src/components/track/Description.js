@@ -4,9 +4,9 @@ import React, {Component, PropTypes} from 'react';
 import Radium from 'radium';
 import random from 'lodash/number/random';
 
-import getStyles from '../../helpers/base64ToColors';
+import {sync as imageToStyles} from '../../helpers/imageToStyles';
 
-require('../../../node_modules/animate.css/source/sliding_entrances/slideInLeft.css');
+require('animate.css/source/sliding_entrances/slideInLeft.css');
 require('../../styles/track-description.less');
 
 @Radium
@@ -15,25 +15,18 @@ export default class Description extends Component {
     count: PropTypes.number.isRequired,
     track: PropTypes.object.isRequired,
     user: PropTypes.string.isRequired,
-    base64: PropTypes.string
+    image: PropTypes.instanceOf(window.Image)
   }
 
   state = {
-    darkBg: random(),
-    style: null
-  }
-
-  componentDidMount () {
-    getStyles(this.props.base64, !!this.state.darkBg, (style) => this.setState({style}));
+    darkBg: random()
   }
 
   render () {
-    const {style} = this.state;
-    if (!style) return null;
-
-    const {count, track, user} = this.props;
+    const {count, track, user, image} = this.props;
     const {name, url, artist} = track;
     const artistName = artist['#text'];
+    const style = imageToStyles({image, darkBg: this.state.darkBg});
 
     return (
       <div style={style.background} className='description'>
