@@ -6,7 +6,7 @@ import pack from './package.json';
 import cssnano from 'cssnano';
 
 const {homepage, name} = pack;
-const manifestName = name + '.appcache';
+const manifestName = `${name}.appcache`;
 
 const template = (ctx) => {
   return `
