@@ -54,6 +54,10 @@
     "webpack-dev-server": "^1.10.1",
     "yeticss": "^7.0.3"
   },
+  "engines": {
+    "node": "^0.10.40",
+    "npm": "^2.13.1"
+  },
   "homepage": "http://repeatone.club",
   "keywords": [
     "lastfm",
@@ -73,8 +77,11 @@
   },
   "scripts": {
     "build": "npm run webpack-config && webpack",
+    "codeship-setup": "npm install && npm run build",
+    "codeship-test": "npm run lint && npm run validate",
     "deploy": "surge --project public/",
     "lint": "eslint --ignore-path .gitignore --ext .js,.es6 .",
+    "npm-version": "npm install -g npm@`cat package.json | jq -r '.engines.npm'`",
     "start": "npm run webpack-config && webpack-dev-server",
     "validate": "npm ls",
     "webpack-config": "babel webpack.config.es6 --out-file webpack.config.js"
