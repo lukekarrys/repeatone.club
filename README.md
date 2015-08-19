@@ -1,6 +1,6 @@
-# repeatone
+# repeatone.club
 
-http://repeatone.lukekarrys.com
+http://repeatone.club
 
 See if a last.fm user is listening to a song on repeat.
 

@@ -1,10 +1,10 @@
 {
-  "name": "repeatone",
+  "name": "repeatone.club",
   "description": "See if a lastfm user is listenting to a song on repeat.",
   "version": "1.0.0",
   "author": "Luke Karrys <luke@lukekarrys.com>",
   "bugs": {
-    "url": "https://github.com/lukekarrys/repeatone/issues"
+    "url": "https://github.com/lukekarrys/repeatone.club/issues"
   },
   "dependencies": {
     "animate.css": "^3.4.0",
@@ -54,10 +54,11 @@
     "webpack-dev-server": "^1.10.1",
     "yeticss": "^7.0.3"
   },
-  "homepage": "http://repeatone.lukekarrys.com",
+  "homepage": "http://repeatone.club",
   "keywords": [
     "lastfm",
-    "repeatone"
+    "repeatone",
+    "repeatone.club"
   ],
   "license": "MIT",
   "main": "index.js",
@@ -68,7 +69,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/lukekarrys/repeatone.git"
+    "url": "git+ssh://git@github.com/lukekarrys/repeatone.club.git"
   },
   "scripts": {
     "build": "npm run webpack-config && webpack",
