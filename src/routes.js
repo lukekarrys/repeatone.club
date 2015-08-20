@@ -1,3 +1,5 @@
+/* globals ga */
+
 'use strict';
 
 import React from 'react';
@@ -8,11 +10,13 @@ import Landing from './pages/Landing';
 import User from './pages/User';
 import NotFound from './pages/NotFound';
 
+const pageview = () => ga('send', 'pageview');
+
 const routes = (
   <Route component={App}>
-    <Route path='/' component={Landing} />
-    <Route path=':user' component={User} />
-    <Route path='*' component={NotFound} />
+    <Route path='/' component={Landing} onEnter={pageview} />
+    <Route path=':user' component={User} onEnter={pageview} />
+    <Route path='*' component={NotFound} onEnter={pageview} />
   </Route>
 );
 
