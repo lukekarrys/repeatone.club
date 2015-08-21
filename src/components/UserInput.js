@@ -3,8 +3,7 @@
 import React, {Component} from 'react';
 import reactMixin from 'react-mixin';
 import {Navigation} from 'react-router';
-
-require('../styles/user-input.less');
+import style from '../styles/user-input.less';
 
 class UserInput extends Component {
   state = {
@@ -24,8 +23,9 @@ class UserInput extends Component {
 
   render () {
     return (
-      <form className='user-input' onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <input
+          className={style.input}
           type='text'
           placeholder='Find user'
           value={this.state.username}

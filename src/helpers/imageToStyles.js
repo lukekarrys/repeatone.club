@@ -5,7 +5,6 @@ import cssColors from 'colors.css';
 import sortBy from 'lodash/collection/sortBy';
 import bows from 'bows';
 import ColorThief from 'exports?ColorThief!color-thief';
-
 import loadImage from './loadImage';
 
 const {Image} = window;

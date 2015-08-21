@@ -2,8 +2,7 @@
 
 import React, {Component, PropTypes} from 'react';
 import assign from 'lodash/object/assign';
-
-import Error from '../components/Error';
+import ErrorComponent from '../components/Error';
 import Track from '../components/track/Track';
 import Loading from '../components/Loading';
 import api from '../helpers/api';
@@ -45,7 +44,7 @@ export default class User extends Component {
 
     if (error) {
       return (
-        <Error message={error.message} />
+        <ErrorComponent message={error.message} />
       );
     }
 
@@ -57,7 +56,7 @@ export default class User extends Component {
 
     if (!count || !track) {
       return (
-        <Error message='That user has not listened to anything yet.' />
+        <ErrorComponent message='That user has not listened to anything yet.' />
       );
     }
 

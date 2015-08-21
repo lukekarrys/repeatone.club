@@ -1,12 +1,9 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-
 import Footer from './components/Footer';
-
-require('normalize.css');
-require('animate.css/source/_base.css');
-require('./styles/app.less');
+import style from './styles/app.less';
+import {classnames as modernizrClasses} from './helpers/modernizr';
 
 export default class App extends Component {
   static propTypes = {
@@ -15,8 +12,8 @@ export default class App extends Component {
 
   render () {
     return (
-      <div className='main'>
-        <div className='center-content'>
+      <div className={`${style.main} ${modernizrClasses}`}>
+        <div className={style.center}>
           {this.props.children}
         </div>
         <Footer />

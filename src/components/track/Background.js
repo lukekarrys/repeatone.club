@@ -1,9 +1,10 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-
-require('animate.css/source/fading_entrances/fadeIn.css');
-require('../../styles/background.less');
+import {animated} from 'animate.css/source/_base.css';
+import {fadeIn} from 'animate.css/source/fading_entrances/fadeIn.css';
+import style from '../../styles/background.less';
+import {cssfilters} from '../../helpers/modernizr';
 
 export default class Background extends Component {
   static propTypes = {
@@ -13,11 +14,14 @@ export default class Background extends Component {
   render () {
     const {image} = this.props;
 
-    if (!image) return null;
+    if (!image || !cssfilters) return null;
 
     return (
-      <div className='background animated fadeIn'>
-        <div style={{backgroundImage: `url(${image.src})`}} />
+      <div className={`${style.root} ${animated} ${fadeIn}`}>
+        <div
+          className={style.image}
+          style={{backgroundImage: `url(${image.src})`}}
+        />
       </div>
     );
   }
