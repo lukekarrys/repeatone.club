@@ -105,12 +105,13 @@ const rCssLoader = /(^|!)(css-loader)($|!)/;
 // Happy, debuggable selectors in dev. Super compact selectors in prod.
 const cssIdentifier = `${isDev ? '[name]___[local]___' : ''}[hash:base64:5]`;
 const cssModulesLoader = `?modules&localIdentName=${cssIdentifier}`;
+const loaderReplacer = (r, n) => (l) => l.loader = l.loader.replace(r, n);
 
 // Update any css-loader with the necessary loader params to do css module stuffs
 loaders
 .filter((l) => !!l.loader)
 .filter((l) => !!l.loader.match(rCssLoader))
-.forEach((l) => l.loader = l.loader.replace(rCssLoader, `$1$2${cssModulesLoader}$3`));
+.forEach(loaderReplacer(rCssLoader, `$1$2${cssModulesLoader}$3`));
 
 postcss.push(cssnano({
   // Required to work with relative Common JS style urls for css-modules
