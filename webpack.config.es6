@@ -4,13 +4,13 @@ import crypto from 'crypto';
 import webpackConfig from 'hjs-webpack';
 import assign from 'lodash/object/assign';
 import cssnano from 'cssnano';
-import modernizr from 'modernizr';
+import {build as buildModernizr} from 'modernizr';
 import {version as modernizrVersion} from 'modernizr/package';
 import {homepage} from './package.json';
 
 const template = (ctx) => `
   <!doctype html>
-  <html lang="en" ${ctx.manifestName ? `manifest="${ctx.manifestName}"` : ''}>
+  <html lang="en"${!ctx.isDev ? ` manifest="${ctx.manifestName}"` : ''}>
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,22 +35,30 @@ const template = (ctx) => `
 const manifest = (ctx) => `
   CACHE MANIFEST
   # ${ctx.id}
-  ${ctx.indexName}
-  ${ctx.main}
-  ${ctx.css}
-  ${ctx.modernizrName}
+  ${ctx.indexName || ''}
+  ${ctx.main || ''}
+  ${ctx.css || ''}
+  ${ctx.modernizrName || ''}
   NETWORK:
   *
   http://*
   https://*
 `.replace(/^\s*/gm, '');
 
-const modernizrFeatures = {'feature-detects': ['css/filters', 'css/fontface']};
-const modernizrId = crypto
-  .createHash('sha1')
-  .update(modernizrVersion + JSON.stringify(modernizrFeatures))
-  .digest('hex')
-  .slice(0, 8);
+const modernizr = (ctx, cb) => {
+  const modernizrFeatures = {'feature-detects': ['css/filters', 'css/fontface']};
+  const modernizrId = crypto
+    .createHash('sha1')
+    .update(modernizrVersion + JSON.stringify(modernizrFeatures))
+    .digest('hex')
+    .slice(0, 8);
+  const modernizrName = `modernizr.${ctx.isDev ? 'dev' : modernizrId}.js`;
+
+  buildModernizr(
+    assign({minify: !ctx.isDev}, modernizrFeatures),
+    (modernizrResult) => cb({name: modernizrName, content: modernizrResult})
+  );
+};
 
 const buildFiles = (context, done) => {
   const {isDev} = context;
@@ -58,19 +66,19 @@ const buildFiles = (context, done) => {
   const templateContext = assign({
     id: new Date().valueOf(),
     indexName: isDev ? 'index.html' : '200.html',
-    manifestName: isDev ? '' : 'cache.appcache',
-    modernizrName: `modernizr.${isDev ? '' : modernizrId}.js`
+    manifestName: 'cache.appcache'
   }, context);
 
-  // Build modernizr and when its done, built the rest of our files
-  modernizr.build(
-    assign({minify: !isDev}, modernizrFeatures),
-    (modernizrResult) => {
+  // Build modernizr and when its done, build the rest of the files
+  modernizr(
+    templateContext,
+    ({name: modernizrName, content: modernizrFile}) => {
+      assign(templateContext, {modernizrName});
       done(null, {
         CNAME: homepage.replace(/^https?:\/\//, ''),
-        [templateContext.indexName]: template(templateContext),
+        [templateContext.modernizrName]: modernizrFile,
         [templateContext.manifestName]: manifest(templateContext),
-        [templateContext.modernizrName]: modernizrResult
+        [templateContext.indexName]: template(templateContext)
       });
     }
   );
