@@ -1402,11 +1402,6 @@
         }
       }
     },
-    "color-luminance": {
-      "version": "2.1.0",
-      "from": "color-luminance@>=2.1.0 <3.0.0",
-      "resolved": "https://registry.npmjs.org/color-luminance/-/color-luminance-2.1.0.tgz"
-    },
     "color-thief": {
       "version": "2.0.0",
       "from": "lokesh/color-thief#050157dc1966a8b9bd14f32faeb5bd06b9fa2e09",
@@ -4908,18 +4903,6 @@
           "version": "1.2.11",
           "from": "mime@>=1.2.0 <1.3.0",
           "resolved": "http://registry.npmjs.org/mime/-/mime-1.2.11.tgz"
-        }
-      }
-    },
-    "wcag-contrast": {
-      "version": "0.0.0",
-      "from": "wcag-contrast@0.0.0",
-      "resolved": "https://registry.npmjs.org/wcag-contrast/-/wcag-contrast-0.0.0.tgz",
-      "dependencies": {
-        "relative-luminance": {
-          "version": "0.0.0",
-          "from": "relative-luminance@0.0.0",
-          "resolved": "https://registry.npmjs.org/relative-luminance/-/relative-luminance-0.0.0.tgz"
         }
       }
     },
