@@ -27,7 +27,7 @@ class UserInput extends Component {
         <input
           className={style.input}
           type='text'
-          placeholder='Find user'
+          placeholder='Find last.fm user'
           value={this.state.username}
           onChange={this.handleUsername}
         />
