@@ -16,12 +16,12 @@ export default class AlbumCover extends Component {
     return (
       <div className={`${style.root} ${animated} ${slideInDown}`}>
         <div className={style.shadow} />
-        {image ?
-          <img className={style.image} src={image.src} /> :
-          <div className={style.text}>
-            <p className='artist'>{track.artist['#text']}</p>
-            <p className='album'>{track.album['#text']}</p>
-          </div>
+        {image
+          ? <img className={style.image} src={image.src} />
+          : <div className={style.text}>
+              <p className='artist'>{track.artist['#text']}</p>
+              <p className='album'>{track.album['#text']}</p>
+            </div>
         }
       </div>
     );
