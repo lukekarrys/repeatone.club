@@ -1,0 +1,28 @@
+'use strict';
+
+import React, {PropTypes, Component} from 'react';
+import CSSModules from 'react-css-modules';
+import {fontface} from '../../helpers/modernizr';
+
+@CSSModules(require('./style.css'))
+export default class Icon extends Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    children: PropTypes.string
+  }
+
+  render () {
+    if (fontface) {
+      return (
+        <span>
+          <span styleName={this.props.name} aria-hidden='true' />
+          <span style={{display: 'none'}} aria-hidden='false'>{` ${this.props.children}`}</span>
+        </span>
+      );
+    }
+
+    return (
+      <span>{this.props.children}</span>
+    );
+  }
+}

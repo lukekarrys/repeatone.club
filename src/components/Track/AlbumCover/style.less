@@ -3,6 +3,9 @@
 @album-cover-size: 300px;
 
 .root {
+  composes: animated from 'animate.css/source/_base.css';
+  composes: slideInDown from 'animate.css/source/sliding_entrances/slideInDown.css';
+
   position: relative;
   height: @album-cover-size;
   width: @album-cover-size;

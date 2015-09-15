@@ -3,8 +3,9 @@
 import React, {Component} from 'react';
 import reactMixin from 'react-mixin';
 import {Navigation} from 'react-router';
-import style from '../styles/user-input.less';
+import CSSModules from 'react-css-modules';
 
+@CSSModules(require('./style.less'))
 class UserInput extends Component {
   state = {
     username: ''
@@ -25,7 +26,7 @@ class UserInput extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
-          className={style.input}
+          styleName='root'
           type='text'
           placeholder='Find last.fm user'
           value={this.state.username}

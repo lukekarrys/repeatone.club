@@ -3,7 +3,7 @@
 import React, {Component, PropTypes} from 'react';
 import assign from 'lodash/object/assign';
 import ErrorComponent from '../components/Error';
-import Track from '../components/track/Track';
+import Track from '../components/Track';
 import Loading from '../components/Loading';
 import api from '../helpers/api';
 

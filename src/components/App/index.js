@@ -1,10 +1,11 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import Footer from './components/Footer';
-import style from './styles/app.less';
-import {classnames as modernizrClasses} from './helpers/modernizr';
+import CSSModules from 'react-css-modules';
+import Footer from '../Footer';
+import {classnames as modernizrClasses} from '../../helpers/modernizr';
 
+@CSSModules(require('./style.less'))
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired
@@ -12,8 +13,8 @@ export default class App extends Component {
 
   render () {
     return (
-      <div className={`${style.main} ${modernizrClasses}`}>
-        <div className={style.center}>
+      <div styleName='main' className={modernizrClasses}>
+        <div styleName='center'>
           {this.props.children}
         </div>
         <Footer />

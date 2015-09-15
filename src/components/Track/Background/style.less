@@ -1,6 +1,9 @@
 @background-offset: 15%;
 
 .root {
+  composes: animated from 'animate.css/source/_base.css';
+  composes: fadeIn from 'animate.css/source/fading_entrances/fadeIn.css';
+
   height: 100vh;
   width: 100%;
   position: fixed;

@@ -1,11 +1,10 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import {animated} from 'animate.css/source/_base.css';
-import {fadeIn} from 'animate.css/source/fading_entrances/fadeIn.css';
-import style from '../../styles/background.less';
-import {cssfilters} from '../../helpers/modernizr';
+import CSSModules from 'react-css-modules';
+import {cssfilters} from '../../../helpers/modernizr';
 
+@CSSModules(require('./style.less'))
 export default class Background extends Component {
   static propTypes = {
     image: PropTypes.instanceOf(window.Image)
@@ -17,9 +16,9 @@ export default class Background extends Component {
     if (!image || !cssfilters) return null;
 
     return (
-      <div className={`${style.root} ${animated} ${fadeIn}`}>
+      <div styleName='root'>
         <div
-          className={style.image}
+          styleName='image'
           style={{backgroundImage: `url(${image.src})`}}
         />
       </div>

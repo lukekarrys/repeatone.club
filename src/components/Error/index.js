@@ -1,9 +1,10 @@
 'use strict';
 
 import React, {Component, PropTypes} from 'react';
-import UserInput from './UserInput';
-import style from '../styles/error.less';
+import CSSModules from 'react-css-modules';
+import UserInput from '../UserInput';
 
+@CSSModules(require('./style.less'))
 export default class Error extends Component {
   static propTypes = {
     message: PropTypes.string.isRequired
@@ -14,7 +15,7 @@ export default class Error extends Component {
 
     return (
       <div>
-        <p className={style.root}>
+        <p styleName='root'>
           {message + (message.slice(-1) !== '.' ? '.' : '')}
         </p>
         <UserInput />
