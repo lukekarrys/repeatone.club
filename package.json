@@ -41,6 +41,7 @@
     "exports-loader": "^0.6.2",
     "file-loader": "^0.8.4",
     "hjs-webpack": "^2.13.1",
+    "http-server": "^0.8.0",
     "json-loader": "^0.5.2",
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
@@ -85,6 +86,7 @@
     "npm-version": "npm install -g npm@`cat package.json | jq -r '.engines.npm'`",
     "shrinkwrap": "npm shrinkwrap --dev",
     "start": "npm run webpack-config && webpack-dev-server",
+    "static": "http-server ./public -p 8080",
     "validate": "npm ls",
     "webpack-config": "babel webpack.config.es6 --out-file webpack.config.js"
   }

@@ -78,7 +78,9 @@ const buildFiles = (context, done) => {
         CNAME: homepage.replace(/^https?:\/\//, ''),
         [templateContext.modernizrName]: modernizrFile,
         [templateContext.manifestName]: manifest(templateContext),
-        [templateContext.indexName]: template(templateContext)
+        // Build an index file for testing locally too
+        'index.html': template(templateContext),
+        '200.html': template(templateContext)
       });
     }
   );
