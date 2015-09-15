@@ -84,38 +84,31 @@ const buildFiles = (context, done) => {
   );
 };
 
+const replaceLoader = (match, replacer) => (l) => {
+  if (l && l.loader && l.loader.match(match)) {
+    l.loader = l.loader.replace(match, replacer);
+  }
+};
+
 const config = webpackConfig({
   in: 'src/main.js',
   out: 'public',
   clearBeforeBuild: true,
   output: {hash: true},
-  hostname: 'lukekarrys.local',
-  devServer: {noInfo: true},
   html: buildFiles
 });
 
-// Destructuring to get stuff out of the config that we need to manipulate/use
-const {spec: {isDev}, module: {loaders}, postcss} = config;
-
-// css-loader could come at the start or end so we use ^/$ in the regex,
-// we cant just match css-loader because then that would match things like
-// postcss-loader
-const rCssLoader = /(^|!)(css-loader)($|!)/;
+// Destructuring to get isDev status
+const {spec: {isDev}} = config;
 
 // Happy, debuggable selectors in dev. Super compact selectors in prod.
-const cssIdentifier = `${isDev ? '[name]___[local]___' : ''}[hash:base64:5]`;
-const cssModulesLoader = `?modules&localIdentName=${cssIdentifier}`;
-const loaderReplacer = (r, n) => (l) => l.loader = l.loader.replace(r, n);
+const cssDevIdent = isDev ? '[path][name]___[local]___' : '';
+const cssModulesLoader = `?modules&localIdentName=${cssDevIdent}[hash:base64:5]`;
+const cssModuleMatch = /(^|!)(css-loader)($|!)/;
+config.module.loaders.forEach(replaceLoader(cssModuleMatch, `$1$2${cssModulesLoader}$3`));
 
-// Update any css-loader with the necessary loader params to do css module stuffs
-loaders
-.filter((l) => !!l.loader)
-.filter((l) => !!l.loader.match(rCssLoader))
-.forEach(loaderReplacer(rCssLoader, `$1$2${cssModulesLoader}$3`));
-
-postcss.push(cssnano({
+config.postcss.push(cssnano({
   // Required to work with relative Common JS style urls for css-modules
-  // https://github.com/less/less.js/pull/2615
   normalizeUrl: false,
   // Core is on by default so disabling it for dev allows for more readable
   // css since it retains whitespace and bracket newlines

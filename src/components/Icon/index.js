@@ -4,7 +4,7 @@ import React, {PropTypes, Component} from 'react';
 import CSSModules from 'react-css-modules';
 import {fontface} from '../../helpers/modernizr';
 
-@CSSModules(require('./style.css'))
+@CSSModules(require('./style.less'))
 export default class Icon extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,

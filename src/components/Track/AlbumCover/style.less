@@ -3,9 +3,10 @@
 @album-cover-size: 300px;
 
 .root {
-  composes: animated from 'animate.css/source/_base.css';
   composes: slideInDown from 'animate.css/source/sliding_entrances/slideInDown.css';
 
+  animation-duration: 1s;
+  animation-fill-mode: both;
   position: relative;
   height: @album-cover-size;
   width: @album-cover-size;
