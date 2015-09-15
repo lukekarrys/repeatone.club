@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import reactMixin from 'react-mixin';
-import {Navigation} from 'react-router';
+import {History} from 'react-router';
 import CSSModules from 'react-css-modules';
 
 @CSSModules(require('./style.less'))
@@ -15,7 +15,7 @@ class UserInput extends Component {
     e.preventDefault();
     const {username} = this.state;
     if (!username) return;
-    this.transitionTo(`/${username}`);
+    this.history.pushState(null, `/${username}`);
   }
 
   handleUsername = (e) => {
@@ -37,7 +37,7 @@ class UserInput extends Component {
   }
 }
 
-reactMixin.onClass(UserInput, Navigation);
+reactMixin.onClass(UserInput, History);
 
 export default UserInput;
 

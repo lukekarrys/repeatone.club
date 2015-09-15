@@ -14,6 +14,7 @@
     "color-thief": "lokesh/color-thief#050157dc1966a8b9bd14f32faeb5bd06b9fa2e09",
     "colors.css": "^2.3.0",
     "css-spinners": "jlong/css-spinners#bc2ed648812b4011e4d425f11b0d3deeb4f42795",
+    "history": "^1.9.1",
     "lodash": "^3.10.1",
     "modernizr": "3.0.0-alpha.4",
     "normalize.css": "^3.0.3",
@@ -21,7 +22,7 @@
     "react": "^0.13.3",
     "react-css-modules": "^3.0.5",
     "react-mixin": "^2.0.1",
-    "react-router": "1.0.0-beta3",
+    "react-router": "^1.0.0-rc1",
     "xhr": "^2.0.4"
   },
   "devDependencies": {
