@@ -22,7 +22,7 @@
     "react": "^0.13.3",
     "react-css-modules": "^3.1.0",
     "react-mixin": "^2.0.2",
-    "react-router": "^1.0.0-rc1",
+    "react-router": "1.0.0-rc1",
     "xhr": "^2.1.0"
   },
   "devDependencies": {
@@ -36,7 +36,6 @@
     "css-loader": "^0.18.0",
     "cssnano": "^3.0.1",
     "eslint": "^1.10.3",
-    "eslint-plugin-arrow-function": "^1.0.1",
     "eslint-plugin-classes": "^0.1.1",
     "eslint-plugin-react": "^3.11.3",
     "exports-loader": "^0.6.2",
@@ -58,8 +57,8 @@
     "yeticss": "^7.0.5"
   },
   "engines": {
-    "node": "^0.10.40",
-    "npm": "^2.13.1"
+    "node": "^5.0.0",
+    "npm": "^3.0.0"
   },
   "homepage": "http://repeatone.club",
   "keywords": [
@@ -79,13 +78,12 @@
     "url": "git+ssh://git@github.com/lukekarrys/repeatone.club.git"
   },
   "scripts": {
-    "build": "npm run shrinkwrap && npm run webpack-config && webpack",
+    "build": "npm run webpack-config && webpack",
     "codeship-setup": "npm run npm-version && npm install && npm run build",
     "codeship-test": "npm run lint && npm run validate",
     "deploy": "surge --project public/",
     "lint": "eslint --ignore-path .gitignore --ext .js,.es6 .",
     "npm-version": "npm install -g npm@`cat package.json | jq -r '.engines.npm'`",
-    "shrinkwrap": "npm shrinkwrap --dev",
     "start": "npm run webpack-config && webpack-dev-server",
     "static": "http-server ./public -p 8080",
     "validate": "npm ls",
