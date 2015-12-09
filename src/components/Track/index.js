@@ -19,24 +19,24 @@ export default class Track extends Component {
     image: null
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.loadImage(this.props.base64);
   }
 
-  componentWillReceiveProps (props) {
+  componentWillReceiveProps(props) {
     this.loadImage(props.base64);
   }
 
-  loadImage (base64) {
+  loadImage(base64) {
     if (!base64) return this.setImage(null);
     loadImage(this.props.base64, (__, image = null) => this.setImage(image));
   }
 
-  setImage (image) {
+  setImage(image) {
     this.setState({attemptedImage: true, image});
   }
 
-  render () {
+  render() {
     const {image, attemptedImage} = this.state;
     const {count, track, user} = this.props;
 

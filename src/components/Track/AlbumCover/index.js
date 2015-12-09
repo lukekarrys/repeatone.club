@@ -10,7 +10,7 @@ export default class AlbumCover extends Component {
     track: PropTypes.object.isRequired
   }
 
-  render () {
+  render() {
     const {image, track} = this.props;
     return (
       <div styleName='root'>

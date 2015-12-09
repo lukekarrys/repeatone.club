@@ -11,7 +11,7 @@ export default class Icon extends Component {
     children: PropTypes.string
   }
 
-  render () {
+  render() {
     if (fontface) {
       return (
         <span>

@@ -20,7 +20,7 @@ export default class Description extends Component {
     darkBg: random()
   }
 
-  render () {
+  render() {
     const {count, track, user, image} = this.props;
     const {name, url, artist} = track;
     const artistName = artist['#text'];

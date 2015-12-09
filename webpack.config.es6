@@ -8,6 +8,13 @@ import {build as buildModernizr} from 'modernizr';
 import {version as modernizrVersion} from 'modernizr/package';
 import {homepage} from './package.json';
 
+const DEFAULT_HASH_LENGTH = 8;
+const hashId = (data, hashLength = DEFAULT_HASH_LENGTH) => crypto
+  .createHash('sha1')
+  .update(data)
+  .digest('hex')
+  .slice(0, hashLength);
+
 const template = (ctx) => `
   <!doctype html>
   <html lang="en"${!ctx.isDev ? ` manifest="${ctx.manifestName}"` : ''}>
@@ -47,11 +54,7 @@ const manifest = (ctx) => `
 
 const modernizr = (ctx, cb) => {
   const modernizrFeatures = {'feature-detects': ['css/filters', 'css/fontface']};
-  const modernizrId = crypto
-    .createHash('sha1')
-    .update(modernizrVersion + JSON.stringify(modernizrFeatures))
-    .digest('hex')
-    .slice(0, 8);
+  const modernizrId = hashId(modernizrVersion + JSON.stringify(modernizrFeatures));
   const modernizrName = `modernizr.${ctx.isDev ? 'dev' : modernizrId}.js`;
 
   buildModernizr(

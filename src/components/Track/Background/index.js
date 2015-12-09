@@ -10,7 +10,7 @@ export default class Background extends Component {
     image: PropTypes.instanceOf(window.Image)
   }
 
-  render () {
+  render() {
     const {image} = this.props;
 
     if (!image || !cssfilters) return null;

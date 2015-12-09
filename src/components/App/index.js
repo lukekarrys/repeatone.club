@@ -11,7 +11,7 @@ export default class App extends Component {
     children: PropTypes.element.isRequired
   }
 
-  render () {
+  render() {
     return (
       <div styleName='main' className={modernizrClasses}>
         <div styleName='center'>

@@ -22,7 +22,7 @@ class UserInput extends Component {
     this.setState({username: e.target.value});
   }
 
-  render () {
+  render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <input

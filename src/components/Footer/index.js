@@ -7,7 +7,7 @@ import Icon from '../Icon';
 
 @CSSModules(require('./style.less'))
 export default class Footer extends Component {
-  render () {
+  render() {
     return (
       <footer styleName='root'>
         <Link to='/'>

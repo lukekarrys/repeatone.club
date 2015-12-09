@@ -21,15 +21,15 @@ export default class User extends Component {
     error: null
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.fetch(this.props);
   }
 
-  componentWillReceiveProps (props) {
+  componentWillReceiveProps(props) {
     this.fetch(props);
   }
 
-  fetch (props) {
+  fetch(props) {
     const {user} = props.params;
     if (user) {
       this.setState({loading: true});
@@ -39,7 +39,7 @@ export default class User extends Component {
     }
   }
 
-  render () {
+  render() {
     const {error, loading, count, track, base64, user} = this.state;
 
     if (error) {

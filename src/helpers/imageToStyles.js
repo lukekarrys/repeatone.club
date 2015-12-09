@@ -37,7 +37,8 @@ const DEFAULT_STYLES = colorsToStyles({
 });
 
 const imageToStyles = ({image, darkBg}) => {
-  const palette = new ColorThief().getPalette(image, 8);
+  const PALETTE_COLORS = 8;
+  const palette = new ColorThief().getPalette(image, PALETTE_COLORS);
   const colors = sortBy(palette, luminosity);
 
   const background = darkBg ? first(colors, 0) : last(colors, 0);

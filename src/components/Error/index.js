@@ -10,7 +10,7 @@ export default class Error extends Component {
     message: PropTypes.string.isRequired
   }
 
-  render () {
+  render() {
     const {message} = this.props;
 
     return (

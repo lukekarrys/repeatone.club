@@ -5,7 +5,7 @@ import CSSModules from 'react-css-modules';
 
 @CSSModules(require('./style.less'))
 export default class Loading extends Component {
-  render () {
+  render() {
     return (
       <div>
         <div styleName='root' />
