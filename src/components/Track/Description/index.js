@@ -3,7 +3,7 @@
 import React, {Component, PropTypes} from 'react';
 import CSSModules from 'react-css-modules';
 import Radium from 'radium';
-import random from 'lodash/number/random';
+import {random} from 'lodash';
 import {sync as imageToStyles} from '../../../helpers/imageToStyles';
 
 @Radium

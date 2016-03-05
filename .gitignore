@@ -28,4 +28,3 @@ node_modules
 
 # Built project dirs
 public
-webpack.config.js

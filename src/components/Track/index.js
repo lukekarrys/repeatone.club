@@ -29,7 +29,7 @@ export default class Track extends Component {
 
   loadImage(base64) {
     if (!base64) return this.setImage(null);
-    loadImage(this.props.base64, (__, image = null) => this.setImage(image));
+    return loadImage(this.props.base64, (__, image = null) => this.setImage(image));
   }
 
   setImage(image) {

@@ -2,7 +2,7 @@
 
 import Color from 'color';
 import cssColors from 'colors.css';
-import sortBy from 'lodash/collection/sortBy';
+import {sortBy} from 'lodash';
 import bows from 'bows';
 import ColorThief from 'exports?ColorThief!color-thief';
 import loadImage from './loadImage';
@@ -90,7 +90,7 @@ const loadImageToStyles = ({image, darkBg}, cb) => {
 
   const imageSrc = image instanceof Image ? image.src : image;
 
-  loadImage(imageSrc, (err, loadedImage) => {
+  return loadImage(imageSrc, (err, loadedImage) => {
     cb(null, imageToStylesSync({darkBg, err, image: loadedImage}));
   });
 };

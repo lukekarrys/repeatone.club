@@ -1,4 +1,23 @@
 {
-  "stage": 0,
-  "optional": "runtime"
+  "plugins": [
+    "transform-decorators-legacy",
+    "add-module-exports"
+  ],
+  "presets": [
+    "react",
+    "es2015",
+    "stage-0"
+  ],
+  "env": {
+    "development": {
+      "presets": [
+        "react-hmre"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "lodash"
+      ]
+    }
+  }
 }

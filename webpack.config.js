@@ -1,19 +1,21 @@
 'use strict';
 
-import crypto from 'crypto';
-import webpackConfig from 'hjs-webpack';
-import assign from 'lodash/object/assign';
-import cssnano from 'cssnano';
-import {build as buildModernizr} from 'modernizr';
-import {version as modernizrVersion} from 'modernizr/package';
-import {homepage} from './package.json';
+const crypto = require('crypto');
+const webpackConfig = require('hjs-webpack');
+const assign = require('lodash/assign');
+const cssnano = require('cssnano');
+const buildModernizr = require('modernizr').build;
+const modernizrVersion = require('modernizr/package').version;
+const homepage = require('./package.json').homepage;
+
+const isDev = process.env.NODE_ENV !== 'production';
 
 const DEFAULT_HASH_LENGTH = 8;
-const hashId = (data, hashLength = DEFAULT_HASH_LENGTH) => crypto
+const hashId = (data, hashLength) => crypto
   .createHash('sha1')
   .update(data)
   .digest('hex')
-  .slice(0, hashLength);
+  .slice(0, hashLength || DEFAULT_HASH_LENGTH);
 
 const template = (ctx) => `
   <!doctype html>
@@ -28,7 +30,7 @@ const template = (ctx) => `
     <script src="/${ctx.modernizrName}"></script>
     ${ctx.css ? `<link rel="stylesheet" href="/${ctx.css}"/>` : ''}
   </head>
-  <body></body>
+  <body><div id="root"></div></body>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -64,8 +66,6 @@ const modernizr = (ctx, cb) => {
 };
 
 const buildFiles = (context, done) => {
-  const {isDev} = context;
-
   const templateContext = assign({
     id: new Date().valueOf(),
     indexName: isDev ? 'index.html' : '200.html',
@@ -75,11 +75,11 @@ const buildFiles = (context, done) => {
   // Build modernizr and when its done, build the rest of the files
   modernizr(
     templateContext,
-    ({name: modernizrName, content: modernizrFile}) => {
-      assign(templateContext, {modernizrName});
+    (options) => {
+      assign(templateContext, {modernizrName: options.name});
       done(null, {
         CNAME: homepage.replace(/^https?:\/\//, ''),
-        [templateContext.modernizrName]: modernizrFile,
+        [templateContext.modernizrName]: options.content,
         [templateContext.manifestName]: manifest(templateContext),
         // Build an index file for testing locally too
         'index.html': template(templateContext),
@@ -96,15 +96,13 @@ const replaceLoader = (match, replacer) => (l) => {
 };
 
 const config = webpackConfig({
-  in: 'src/main.js',
+  isDev,
+  'in': 'src/main.js',
   out: 'public',
   clearBeforeBuild: true,
   output: {hash: true},
   html: buildFiles
 });
-
-// Destructuring to get isDev status
-const {spec: {isDev}} = config;
 
 // Happy, debuggable selectors in dev. Super compact selectors in prod.
 const cssDevIdent = isDev ? '[path][name]___[local]___' : '';
@@ -121,4 +119,4 @@ config.postcss.push(cssnano({
   discardComments: {removeAll: !isDev}
 }));
 
-export default config;
+module.exports = config;

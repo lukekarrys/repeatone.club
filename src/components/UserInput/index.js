@@ -1,12 +1,11 @@
 'use strict';
 
 import React, {Component} from 'react';
-import reactMixin from 'react-mixin';
-import {History} from 'react-router';
+import {browserHistory} from 'react-router';
 import CSSModules from 'react-css-modules';
 
 @CSSModules(require('./style.less'))
-class UserInput extends Component {
+export default class UserInput extends Component {
   state = {
     username: ''
   }
@@ -15,7 +14,7 @@ class UserInput extends Component {
     e.preventDefault();
     const {username} = this.state;
     if (!username) return;
-    this.history.pushState(null, `/${username}`);
+    browserHistory.push({pathname: `/${username}`});
   }
 
   handleUsername = (e) => {
@@ -36,8 +35,3 @@ class UserInput extends Component {
     );
   }
 }
-
-reactMixin.onClass(UserInput, History);
-
-export default UserInput;
-
