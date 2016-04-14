@@ -22,7 +22,7 @@
     "react": "^15.0.1",
     "react-css-modules": "^3.7.6",
     "react-dom": "^15.0.1",
-    "react-router": "^2.1.1",
+    "react-router": "^2.2.2",
     "xhr": "^2.2.0"
   },
   "devDependencies": {
