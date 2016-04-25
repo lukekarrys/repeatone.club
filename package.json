@@ -9,7 +9,7 @@
   "dependencies": {
     "animate.css": "^3.5.1",
     "bows": "^1.5.0",
-    "classnames": "^2.2.3",
+    "classnames": "^2.2.4",
     "color": "^0.11.1",
     "color-thief": "github:lokesh/color-thief#050157dc1966a8b9bd14f32faeb5bd06b9fa2e09",
     "colors-less": "^1.0.0",
