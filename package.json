@@ -61,7 +61,7 @@
     "webpack": "^1.12.15"
   },
   "engines": {
-    "node": "5.10.1",
+    "node": "^6.0.0",
     "npm": "^3.8.7"
   },
   "homepage": "http://repeatone.club",
