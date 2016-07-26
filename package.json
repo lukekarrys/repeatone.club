@@ -18,7 +18,7 @@
     "lodash": "^4.13.1",
     "modernizr": "^3.3.1",
     "normalize.css": "^4.2.0",
-    "radium": "^0.17.1",
+    "radium": "^0.18.1",
     "react": "^15.2.0",
     "react-css-modules": "^3.7.6",
     "react-dom": "^15.2.0",
