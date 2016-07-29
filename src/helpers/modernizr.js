@@ -1,12 +1,10 @@
 'use strict';
 
-import classnames from 'classnames';
+import makeClassnames from 'classnames';
 
 const {cssfilters, fontface} = window.Modernizr;
 delete window.Modernizr;
 
-export default {
-  cssfilters,
-  fontface,
-  classnames: classnames({cssfilters, fontface})
-};
+export {cssfilters};
+export {fontface};
+export const classnames = makeClassnames({cssfilters, fontface});
