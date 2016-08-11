@@ -89,7 +89,7 @@
     "codeship-setup": "npm install && npm install && npm run build",
     "codeship-test": "npm run lint && npm run validate",
     "deploy": "surge --project public/",
-    "lint": "eslint --ignore-path .gitignore --ext .js,.es6 .",
+    "lint": "eslint --ignore-path .gitignore",
     "npm-version": "npm install -g npm@`cat package.json | jq -r '.engines.npm'`",
     "start": "hjs-dev-server",
     "static": "http-server ./public -p 8080",
