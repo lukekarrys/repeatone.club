@@ -6,7 +6,6 @@ const assign = require('lodash/assign');
 const cssnano = require('cssnano');
 const buildModernizr = require('modernizr').build;
 const modernizrVersion = require('modernizr/package').version;
-const homepage = require('./package.json').homepage;
 
 const isDev = process.env.NODE_ENV !== 'production';
 
