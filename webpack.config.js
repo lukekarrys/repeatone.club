@@ -6,7 +6,6 @@ const assign = require('lodash/assign');
 const cssnano = require('cssnano');
 const buildModernizr = require('modernizr').build;
 const modernizrVersion = require('modernizr/package').version;
-const homepage = require('./package.json').homepage;
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -78,7 +77,6 @@ const buildFiles = (context, done) => {
     (options) => {
       assign(templateContext, {modernizrName: options.name});
       done(null, {
-        CNAME: homepage.replace(/^https?:\/\//, ''),
         [templateContext.modernizrName]: options.content,
         [templateContext.manifestName]: manifest(templateContext),
         // Build an index file for testing locally too
