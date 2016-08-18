@@ -78,7 +78,6 @@ const buildFiles = (context, done) => {
     (options) => {
       assign(templateContext, {modernizrName: options.name});
       done(null, {
-        CNAME: homepage.replace(/^https?:\/\//, ''),
         [templateContext.modernizrName]: options.content,
         [templateContext.manifestName]: manifest(templateContext),
         // Build an index file for testing locally too
