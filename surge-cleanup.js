@@ -1,44 +1,50 @@
+/* eslint no-magic-numbers:0 */
 /* global Promise */
 
 'use strict';
 
-const cp = require('child_process').exec;
+const childProcessExec = require('child_process').exec;
+const stripAnsi = require('strip-ansi');
+const escapeStringRegexp = require('escape-string-regexp');
 
-const getBranches = () => new Promise((resolve, reject) => cp('git ls-remote --heads', (err, stdout, stderr) => {
-  if (err) return reject(err);
+const throwIt = (err) => {throw err;};
 
-  return resolve(
-    stdout
-    .split('\n')
-    .map((str) => str.trim())
-    .filter(Boolean)
-    .map((b) => b.split(/\t/)[1].replace('refs/heads/', ''))
-  );
-}));
-
-const getProjects = (regex) => new Promise((resolve, reject) => cp('surge list', (err, stdout, stderr) => {
-  if (err) return reject(err);
-
-  if (stdout.indexOf('No Projects found.') > -1) {
-    return reject(new Error('No projects could be found'));
+const cp = (command) => new Promise((resolve, reject) => childProcessExec(command, (err, stdout) => {
+  if (err) {
+    return reject(err);
   }
 
-  const SURGE_PRFEIX_OUTPUT = 5; // Number of lines surge prefixes output with
-
-  return resolve(
-    stdout
-    .split('\n')
-    .slice(SURGE_PRFEIX_OUTPUT)
-    .map((str) => str.trim())
-    .filter(Boolean)
-    .filter((p) => regex.test(p))
-  );
+  return resolve(stripAnsi(stdout).split('\n').map((s) => s.trim()).filter(Boolean));
 }));
 
-const PROJECT_REGEX = /-repeatoneclub\.surge\.sh$/;
+const getBranches = () => cp('git ls-remote --heads').then((lines) => lines
+  .map((b) => b.split(/\t/)[1].replace('refs/heads/', ''))
+);
+
+const getProjects = (regex) => cp('surge list').then((lines) => {
+  if (lines.join(' ').indexOf('No Projects found.') > -1) {
+    return Promise.reject(new Error('No projects found'));
+  }
+
+  return lines.slice(3).filter((p) => regex.test(p));
+});
+
+const teardownProject = (project) => {
+  if (!project) {
+    return Promise.reject(new Error('Must give a project to teardown'));
+  }
+
+  return cp(`surge teardown ${project}`).then((lines) => lines.slice(4));
+};
+
+const PROJECT_ENDS_WITH = process.argv.slice(2)[0];
+
+if (!PROJECT_ENDS_WITH) {
+  throwIt(new Error('Must pass an argument to match projects'));
+}
 
 Promise.all([
-  getProjects(PROJECT_REGEX),
+  getProjects(new RegExp(`${escapeStringRegexp(PROJECT_ENDS_WITH)}$`)),
   getBranches()
 ]).then((parts) => {
   const [projects, branches] = parts;
@@ -46,8 +52,7 @@ Promise.all([
   const projectHasMissingBranch = (p) => branches.every((b) => p.indexOf(b) === -1);
   const teardown = projects.filter(projectHasMissingBranch);
 
-  // eslint-disable-next-line no-console
-  console.log(teardown);
-}).catch((err) => {
-  throw err;
-});
+  return Promise.all(teardown.map(teardownProject)).then((output) => {
+    console.log(output.join('\n')); // eslint-disable-line no-console
+  }).catch(throwIt);
+}).catch(throwIt);
