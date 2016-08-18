@@ -16,9 +16,6 @@ export default class Footer extends Component {
         <a href='https://github.com/lukekarrys/repeatone'>
           <Icon name='github'>GitHub</Icon>
         </a>
-        <a href='https://twitter.com/lukekarrys'>
-          <Icon name='twitter'>Twitter</Icon>
-        </a>
       </footer>
     );
   }
