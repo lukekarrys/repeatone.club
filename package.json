@@ -61,6 +61,7 @@
     "strip-ansi": "^3.0.1",
     "style-loader": "^0.13.1",
     "surge": "^0.18.0",
+    "surge-teardown-branches": "^1.0.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1"
   },
@@ -90,7 +91,7 @@
     "build": "NODE_ENV=production webpack --bail",
     "codeship-setup": "npm install && npm install && npm run build",
     "codeship-test": "npm run lint && npm run validate",
-    "deploy": "surge --project public/ && node surge-cleanup.js -repeatoneclub.surge.sh",
+    "deploy": "surge --project public/ && surge-teardown-branches repeatoneclub.surge.sh",
     "deploy-branch": "surge --project public/ --domain $CI_BRANCH-repeatoneclub.surge.sh",
     "lint": "eslint --ignore-path .gitignore .",
     "npm-version": "npm install -g npm@`cat package.json | jq -r '.engines.npm'`",
