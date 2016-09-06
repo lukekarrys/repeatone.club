@@ -41,7 +41,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "^6.11.6",
-    "css-loader": "^0.24.0",
+    "css-loader": "^0.25.0",
     "cssnano": "^3.7.3",
     "escape-string-regexp": "^1.0.5",
     "eslint": "^3.2.2",
