@@ -26,7 +26,7 @@
     "xhr": "^2.2.2"
   },
   "devDependencies": {
-    "@lukekarrys/eslint-config": "^2.1.2",
+    "@lukekarrys/eslint-config": "^2.1.8",
     "autoprefixer": "^6.3.7",
     "babel": "^6.5.2",
     "babel-core": "^6.11.4",
