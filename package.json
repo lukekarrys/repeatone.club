@@ -92,7 +92,7 @@
     "codeship-setup": "npm install && npm install && npm run build",
     "codeship-test": "npm run lint && npm run validate",
     "deploy": "surge --project public/ && surge-teardown-branches repeatoneclub.surge.sh",
-    "deploy-branch": "surge --project public/ --domain $CI_BRANCH-repeatoneclub.surge.sh",
+    "deploy-branch": "SURGE_BRANCH=$(echo $CI_BRANCH | sed 's/\\//-/g'); surge --project public/ --domain $SURGE_BRANCH-repeatoneclub.surge.sh",
     "lint": "eslint --ignore-path .gitignore .",
     "npm-version": "npm install -g npm@`cat package.json | jq -r '.engines.npm'`",
     "start": "hjs-dev-server",
