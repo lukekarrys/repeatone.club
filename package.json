@@ -44,7 +44,7 @@
     "css-loader": "^0.25.0",
     "cssnano": "^3.7.3",
     "escape-string-regexp": "^1.0.5",
-    "eslint": "^3.2.2",
+    "eslint": "^3.9.0",
     "eslint-import-resolver-webpack": "^0.6.0",
     "eslint-plugin-classes": "^0.1.1",
     "eslint-plugin-import": "^1.12.0",
