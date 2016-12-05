@@ -10,7 +10,7 @@
     "animate.css": "^3.5.1",
     "bows": "^1.6.0",
     "classnames": "^2.2.5",
-    "color": "^0.11.3",
+    "color": "^1.0.1",
     "color-thief": "github:lokesh/color-thief#050157dc1966a8b9bd14f32faeb5bd06b9fa2e09",
     "colors-less": "^1.0.0",
     "colors.css": "^3.0.0",
