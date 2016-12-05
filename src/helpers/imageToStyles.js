@@ -13,9 +13,9 @@ const log = bows('base64ToColors');
 const first = (arr, n = 0) => arr[n];
 const last = (arr, n = 0) => arr[arr.length - (n + 1)];
 
-const luminosity = (rgb) => Color().rgb(rgb).luminosity();
-const contrast = (rgb1, rgb2) => Color().rgb(rgb1).contrast(Color().rgb(rgb2));
-const rgbString = (rgb) => Color().rgb(rgb).rgbString();
+const luminosity = (rgb) => Color.rgb(rgb).luminosity();
+const contrast = (rgb1, rgb2) => Color.rgb(rgb1).contrast(Color.rgb(rgb2));
+const rgbString = (rgb) => Color.rgb(rgb).string();
 
 const colorsToStyles = (c) => {
   const {background, text, link, linkHover} = c;
