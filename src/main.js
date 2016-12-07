@@ -12,14 +12,16 @@ import NotFound from './pages/NotFound';
 
 import './styles.less';
 
-const onEnter = () => ga('send', 'pageview');
+const pageview = ({search, pathname}) => ga('send', 'pageview', pathname + search);
+browserHistory.listen(pageview);
+pageview(browserHistory.getCurrentLocation());
 
 render((
   <Router history={browserHistory}>
     <Route component={App}>
-      <Route path='/' component={Landing} onEnter={onEnter} />
-      <Route path=':user' component={User} onEnter={onEnter} />
-      <Route path='*' component={NotFound} onEnter={onEnter} />
+      <Route path='/' component={Landing} />
+      <Route path=':user' component={User} />
+      <Route path='*' component={NotFound} />
     </Route>
   </Router>
 ), document.getElementById('root'));
