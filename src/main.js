@@ -17,9 +17,9 @@ const onEnter = () => ga('send', 'pageview');
 render((
   <Router history={browserHistory}>
     <Route component={App}>
-      <Route path='/' component={Landing} {...onEnter} />
-      <Route path=':user' component={User} {...onEnter} />
-      <Route path='*' component={NotFound} {...onEnter} />
+      <Route path='/' component={Landing} onEnter={onEnter} />
+      <Route path=':user' component={User} onEnter={onEnter} />
+      <Route path='*' component={NotFound} onEnter={onEnter} />
     </Route>
   </Router>
 ), document.getElementById('root'));
