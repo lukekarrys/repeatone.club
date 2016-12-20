@@ -94,7 +94,6 @@
     "deploy": "surge --project public/ && surge-teardown-branches repeatoneclub.surge.sh",
     "deploy-branch": "SURGE_BRANCH=$(echo $CI_BRANCH | sed 's/\\//-/g'); surge --project public/ --domain $SURGE_BRANCH-repeatoneclub.surge.sh",
     "lint": "eslint --ignore-path .gitignore .",
-    "npm-version": "npm install -g npm@`cat package.json | jq -r '.engines.npm'`",
     "start": "hjs-dev-server",
     "static": "http-server ./public -p 8080",
     "test": "npm run build",
