@@ -22,15 +22,15 @@ export default class User extends Component {
   }
 
   componentDidMount() {
-    this.fetch(this.props);
+    this.fetch(this.props.params);
   }
 
   componentWillReceiveProps(props) {
-    this.fetch(props);
+    this.fetch(props.params);
   }
 
-  fetch(props) {
-    const {user} = props.params;
+  fetch(params) {
+    const {user} = params;
     if (user) {
       this.setState({loading: true});
       api(user, (err, data) => {
