@@ -51,7 +51,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.2",
     "exports-loader": "^0.6.3",
-    "file-loader": "^0.10.0",
+    "file-loader": "^0.11.0",
     "git-validate": "^2.2.2",
     "hjs-webpack": "^8.4.3",
     "http-server": "^0.9.0",
