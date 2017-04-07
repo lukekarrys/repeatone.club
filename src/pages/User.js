@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {assign} from 'lodash';
 import ErrorComponent from '../components/Error';
 import Track from '../components/Track';

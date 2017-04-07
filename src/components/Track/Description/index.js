@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import CSSModules from 'react-css-modules';
 import Radium from 'radium';
 import {random} from 'lodash';
