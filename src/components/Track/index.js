@@ -1,6 +1,7 @@
 'use strict';
 
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import loadImage from '../../helpers/loadImage';
 import Background from './Background';
 import AlbumCover from './AlbumCover';
