@@ -3,7 +3,7 @@
 const crypto = require('crypto');
 const webpackConfig = require('hjs-webpack');
 const assign = require('lodash/assign');
-const cssnano = require('cssnano');
+const mergeWith = require('lodash/mergeWith');
 const buildModernizr = require('modernizr').build;
 const modernizrVersion = require('modernizr/package').version;
 const {homepage} = require('./package.json');
@@ -89,11 +89,10 @@ const buildFiles = (context, done) => {
   );
 };
 
-const replaceLoader = (match, replacer) => (l) => {
-  if (l && l.loader && l.loader.match(match)) {
-    l.loader = l.loader.replace(match, replacer);
-  }
-};
+const mergeArrays = (a, b) => mergeWith({}, a, b, (objValue, srcValue) => {
+  if (Array.isArray(objValue)) return objValue.concat(srcValue);
+  return void 0;
+});
 
 const config = webpackConfig({
   isDev,
@@ -104,19 +103,25 @@ const config = webpackConfig({
   html: buildFiles
 });
 
-// Happy, debuggable selectors in dev. Super compact selectors in prod.
-const cssDevIdent = isDev ? '[path][name]___[local]___' : '';
-const cssModulesLoader = `?modules&localIdentName=${cssDevIdent}[hash:base64:5]`;
-const cssModuleMatch = /(^|!)(css-loader)($|!)/;
-config.module.loaders.forEach(replaceLoader(cssModuleMatch, `$1$2${cssModulesLoader}$3`));
+const replaceLoader = (match, options) => {
+  config.module.rules.forEach((loader) => {
+    if (loader && loader.use) {
+      const matchedIndex = loader.use.findIndex((usedLoader) => (usedLoader.loader || usedLoader) === match);
+      const matchedLoader = loader.use[matchedIndex];
+      if (matchedLoader) {
+        loader.use[matchedIndex] = typeof matchedLoader === 'string'
+          ? {loader: matchedLoader, options}
+          : mergeArrays(matchedLoader, {options});
+      }
+    }
+  });
+};
 
-config.postcss.push(cssnano({
-  // Required to work with relative Common JS style urls for css-modules
-  normalizeUrl: false,
-  // Core is on by default so disabling it for dev allows for more readable
-  // css since it retains whitespace and bracket newlines
-  core: !isDev,
-  discardComments: {removeAll: !isDev}
-}));
+// Happy, debuggable selectors in dev. Super compact selectors in prod.
+replaceLoader('css-loader', {
+  minimize: isDev ? false : {discardComments: {removeAll: true}},
+  modules: true,
+  localIdentName: `${isDev ? '[path][name]___[local]___' : ''}[hash:base64:5]`
+});
 
 module.exports = config;
