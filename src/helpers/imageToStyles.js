@@ -4,7 +4,7 @@ import Color from 'color';
 import cssColors from 'colors.css';
 import {sortBy} from 'lodash';
 import bows from 'bows';
-import ColorThief from 'exports?ColorThief!color-thief';
+import ColorThief from 'exports-loader?ColorThief!color-thief';
 import loadImage from './loadImage';
 
 const {Image} = window;
