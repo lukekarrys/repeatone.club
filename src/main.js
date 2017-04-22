@@ -4,7 +4,8 @@
 
 import React from 'react';
 import {render} from 'react-dom';
-import {Router, Route, browserHistory} from 'react-router';
+import {Router, Switch, Route} from 'react-router-dom';
+import browserHistory from './helpers/history';
 import App from './components/App';
 import Landing from './pages/Landing';
 import User from './pages/User';
@@ -14,14 +15,16 @@ import './styles.less';
 
 const pageview = ({search, pathname}) => ga('send', 'pageview', pathname + search);
 browserHistory.listen(pageview);
-pageview(browserHistory.getCurrentLocation());
+pageview(browserHistory.location);
 
 render((
   <Router history={browserHistory}>
-    <Route component={App}>
-      <Route path='/' component={Landing} />
-      <Route path=':user' component={User} />
-      <Route path='*' component={NotFound} />
-    </Route>
+    <App>
+      <Switch>
+        <Route exact path='/' component={Landing} />
+        <Route path='/:user' component={User} />
+        <Route component={NotFound} />
+      </Switch>
+    </App>
   </Router>
 ), document.getElementById('root'));
