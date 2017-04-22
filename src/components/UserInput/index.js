@@ -1,8 +1,8 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {browserHistory} from 'react-router';
 import CSSModules from 'react-css-modules';
+import browserHistory from '../../helpers/history';
 
 @CSSModules(require('./style.less'))
 export default class UserInput extends Component {

@@ -10,7 +10,7 @@ import api from '../helpers/api';
 
 export default class User extends Component {
   static propTypes = {
-    params: PropTypes.object.isRequired
+    match: PropTypes.object.isRequired
   }
 
   state = {
@@ -23,11 +23,11 @@ export default class User extends Component {
   }
 
   componentDidMount() {
-    this.fetch(this.props.params);
+    this.fetch(this.props.match.params);
   }
 
   componentWillReceiveProps(props) {
-    this.fetch(props.params);
+    this.fetch(props.match.params);
   }
 
   fetch(params) {

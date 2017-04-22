@@ -15,6 +15,7 @@
     "colors-less": "^1.0.0",
     "colors.css": "^3.0.0",
     "css-spinners": "github:jlong/css-spinners#bc2ed648812b4011e4d425f11b0d3deeb4f42795",
+    "history": "^4.6.1",
     "lodash": "^4.17.4",
     "modernizr": "^3.3.1",
     "normalize.css": "^6.0.0",
@@ -23,7 +24,7 @@
     "react": "^15.5.1",
     "react-css-modules": "^4.1.0",
     "react-dom": "^15.5.1",
-    "react-router": "^3.0.2",
+    "react-router-dom": "^4.1.1",
     "xhr": "^2.4.0"
   },
   "devDependencies": {
