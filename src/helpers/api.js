@@ -2,7 +2,7 @@
 
 import xhr from 'xhr';
 
-const URI_BASE = 'https://webtask.it.auth0.com/api/run/wt-lukekarrys-gmail_com-0/repeatone';
+const URI_BASE = 'https://wt-lukekarrys-gmail_com-0.run.webtask.io/repeatone-webtask';
 const uri = (user) => `${URI_BASE}?user=${user}`;
 
 const SUCCESS = 200;
