@@ -1,5 +1,7 @@
 # repeatone.club
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/lukekarrys/repeatone.club.svg)](https://greenkeeper.io/)
+
 [ ![Codeship Status for lukekarrys/repeatone.club](https://codeship.com/projects/69239a80-28c3-0133-81bc-1ecec8ed5cc2/status?branch=master)](https://codeship.com/projects/97821)
 
 http://repeatone.club
