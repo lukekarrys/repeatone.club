@@ -8,18 +8,18 @@ import browserHistory from '../../helpers/history';
 export default class UserInput extends Component {
   state = {
     username: ''
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
     const {username} = this.state;
     if (!username) return;
     browserHistory.push({pathname: `/${username}`});
-  }
+  };
 
   handleUsername = (e) => {
     this.setState({username: e.target.value});
-  }
+  };
 
   render() {
     return (

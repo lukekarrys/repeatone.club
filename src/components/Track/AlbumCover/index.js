@@ -9,7 +9,7 @@ export default class AlbumCover extends Component {
   static propTypes = {
     image: PropTypes.instanceOf(window.Image),
     track: PropTypes.object.isRequired
-  }
+  };
 
   render() {
     const {image, track} = this.props;

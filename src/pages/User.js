@@ -11,7 +11,7 @@ import api from '../helpers/api';
 export default class User extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired
-  }
+  };
 
   state = {
     count: null,
@@ -20,7 +20,7 @@ export default class User extends Component {
     base64: null,
     loading: true,
     error: null
-  }
+  };
 
   componentDidMount() {
     this.fetch(this.props.match.params);

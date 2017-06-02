@@ -10,7 +10,7 @@ export default class Icon extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     children: PropTypes.string
-  }
+  };
 
   render() {
     if (fontface) {

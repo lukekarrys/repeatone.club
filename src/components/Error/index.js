@@ -9,7 +9,7 @@ import UserInput from '../UserInput';
 export default class Error extends Component {
   static propTypes = {
     message: PropTypes.string.isRequired
-  }
+  };
 
   render() {
     const {message} = this.props;

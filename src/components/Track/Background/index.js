@@ -9,7 +9,7 @@ import {cssfilters} from '../../../helpers/modernizr';
 export default class Background extends Component {
   static propTypes = {
     image: PropTypes.instanceOf(window.Image)
-  }
+  };
 
   render() {
     const {image} = this.props;

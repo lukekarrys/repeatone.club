@@ -13,12 +13,12 @@ export default class Track extends Component {
     track: PropTypes.object.isRequired,
     user: PropTypes.string.isRequired,
     base64: PropTypes.string
-  }
+  };
 
   state = {
     attemptedImage: false,
     image: null
-  }
+  };
 
   componentDidMount() {
     this.loadImage(this.props.base64);

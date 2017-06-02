@@ -15,11 +15,11 @@ export default class Description extends Component {
     track: PropTypes.object.isRequired,
     user: PropTypes.string.isRequired,
     image: PropTypes.instanceOf(window.Image)
-  }
+  };
 
   state = {
     darkBg: random()
-  }
+  };
 
   render() {
     const {count, track, user, image} = this.props;
