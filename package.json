@@ -45,7 +45,7 @@
     "babel-runtime": "^6.23.0",
     "css-loader": "^0.28.1",
     "escape-string-regexp": "^1.0.5",
-    "eslint": "^3.16.0",
+    "eslint": "^4.0.0",
     "eslint-import-resolver-webpack": "^0.8.1",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-classes": "^0.1.1",
