@@ -23,7 +23,7 @@
     "radium": "^0.19.4",
     "react": "^16.0.0",
     "react-css-modules": "^4.7.1",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.0",
     "react-router-dom": "^4.1.2",
     "xhr": "^2.4.0"
   },
