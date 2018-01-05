@@ -64,14 +64,13 @@
     "strip-ansi": "^4.0.0",
     "style-loader": "^0.19.0",
     "surge": "^0.19.0",
-    "surge-teardown-branches": "^1.0.0",
     "url-loader": "^0.6.2"
   },
   "engines": {
     "node": "^6.0.0",
     "npm": "^3.8.7"
   },
-  "homepage": "http://repeatone.club",
+  "homepage": "http://repeatoneclub.surge.sh",
   "keywords": [
     "lastfm",
     "repeatone",
@@ -93,9 +92,7 @@
     "build": "NODE_ENV=production webpack --bail",
     "codeship-setup": "npm install && npm install && npm run build",
     "codeship-test": "npm run lint && npm run validate",
-    "deploy": "surge --project public/ && npm run deploy-teardown",
-    "deploy-branch": "SURGE_BRANCH=$(echo $CI_BRANCH | sed 's/\\//-/g' | sed 's/@//g'); surge --project public/ --domain $SURGE_BRANCH-repeatoneclub.surge.sh",
-    "deploy-teardown": "surge-teardown-branches repeatoneclub.surge.sh",
+    "deploy": "surge --project public/",
     "lint": "eslint --ignore-path .gitignore .",
     "start": "hjs-dev-server",
     "test": "npm run build",
