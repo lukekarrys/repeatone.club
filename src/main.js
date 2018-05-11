@@ -1,5 +1,3 @@
-/* globals ga */
-
 'use strict';
 
 import React from 'react';
@@ -12,10 +10,6 @@ import User from './pages/User';
 import NotFound from './pages/NotFound';
 
 import './styles.less';
-
-const pageview = ({search, pathname}) => ga('send', 'pageview', pathname + search);
-browserHistory.listen(pageview);
-pageview(browserHistory.location);
 
 render((
   <Router history={browserHistory}>
