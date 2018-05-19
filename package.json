@@ -63,14 +63,13 @@
     "postcss-loader": "^2.0.8",
     "strip-ansi": "^4.0.0",
     "style-loader": "^0.19.0",
-    "surge": "^0.19.0",
     "url-loader": "^0.6.2"
   },
   "engines": {
     "node": "^6.0.0",
     "npm": "^3.8.7"
   },
-  "homepage": "http://repeatoneclub.surge.sh",
+  "homepage": "https://repeatoneclub.lukecod.es",
   "keywords": [
     "lastfm",
     "repeatone",
@@ -90,7 +89,6 @@
   },
   "scripts": {
     "build": "NODE_ENV=production webpack --bail",
-    "deploy": "surge --project public/",
     "lint": "eslint --ignore-path .gitignore .",
     "start": "hjs-dev-server",
     "test": "npm run build",

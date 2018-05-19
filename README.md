@@ -3,7 +3,7 @@
 [ ![Codeship Status for lukekarrys/repeatone.club](https://codeship.com/projects/69239a80-28c3-0133-81bc-1ecec8ed5cc2/status?branch=master)](https://codeship.com/projects/97821)
 [![Greenkeeper badge](https://badges.greenkeeper.io/lukekarrys/repeatone.club.svg)](https://greenkeeper.io/)
 
-[repeatone.club](http://repeatoneclub.surge.sh)
+[repeatone.club](https://repeatoneclub.lukecod.es)
 
 See if a last.fm user is listening to a song on repeat.
 
@@ -17,15 +17,6 @@ See if a last.fm user is listening to a song on repeat.
 ```
 npm install
 npm start
-```
-
-### Prod
-
-Hosted on [surge.sh](https://surge.sh/).
-
-```
-npm run build
-npm run deploy
 ```
 
 ### API

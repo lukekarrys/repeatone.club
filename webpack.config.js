@@ -6,7 +6,6 @@ const assign = require('lodash/assign');
 const mergeWith = require('lodash/mergeWith');
 const buildModernizr = require('modernizr').build;
 const modernizrVersion = require('modernizr/package').version;
-const {homepage} = require('./package.json');
 
 const isDev = process.env.NODE_ENV !== 'production';
 
@@ -71,7 +70,6 @@ const buildFiles = (context, done) => {
     (options) => {
       assign(templateContext, {modernizrName: options.name});
       done(null, {
-        CNAME: homepage.replace(/^https?:\/\//, ''),
         [templateContext.modernizrName]: options.content,
         [templateContext.manifestName]: manifest(templateContext),
         // Build an index file for testing locally too
