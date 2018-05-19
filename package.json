@@ -90,8 +90,6 @@
   },
   "scripts": {
     "build": "NODE_ENV=production webpack --bail",
-    "codeship-setup": "npm install && npm install && npm run build",
-    "codeship-test": "npm run lint && npm run validate",
     "deploy": "surge --project public/",
     "lint": "eslint --ignore-path .gitignore .",
     "start": "hjs-dev-server",
