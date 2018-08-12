@@ -72,9 +72,8 @@ const buildFiles = (context, done) => {
       done(null, {
         [templateContext.modernizrName]: options.content,
         [templateContext.manifestName]: manifest(templateContext),
-        // Build an index file for testing locally too
-        'index.html': template(templateContext),
-        '200.html': template(templateContext)
+        _redirects: '/*    /index.html   200',
+        'index.html': template(templateContext)
       });
     }
   );
