@@ -26,7 +26,8 @@ export default class User extends Component {
     this.fetch(this.props.match.params);
   }
 
-  componentWillReceiveProps(props) {
+  // eslint-disable-next-line classes/name, camelcase
+  UNSAFE_componentWillReceiveProps(props) {
     this.fetch(props.match.params);
   }
 

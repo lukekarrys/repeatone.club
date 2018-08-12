@@ -24,7 +24,8 @@ export default class Track extends Component {
     this.loadImage(this.props.base64);
   }
 
-  componentWillReceiveProps(props) {
+  // eslint-disable-next-line classes/name, camelcase
+  UNSAFE_componentWillReceiveProps(props) {
     this.loadImage(props.base64);
   }
 
