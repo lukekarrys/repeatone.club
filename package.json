@@ -1,7 +1,7 @@
 {
   "name": "repeatone.club",
   "description": "See if a lastfm user is listenting to a song on repeat.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Luke Karrys <luke@lukekarrys.com>",
   "bugs": {
     "url": "https://github.com/lukekarrys/repeatone.club/issues"
