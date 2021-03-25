@@ -71,8 +71,8 @@
     "url-loader": "^0.6.2"
   },
   "engines": {
-    "node": "^6.0.0",
-    "npm": "^3.8.7"
+    "node": "^14.15.5",
+    "npm": "^6.14.11"
   },
   "homepage": "https://repeatoneclub.lukecod.es",
   "keywords": [
