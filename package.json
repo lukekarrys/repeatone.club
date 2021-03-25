@@ -17,7 +17,7 @@
     "colors.css": "^3.0.0",
     "css-spinners": "github:jlong/css-spinners#bc2ed648812b4011e4d425f11b0d3deeb4f42795",
     "history": "^4.7.2",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "modernizr": "^3.5.0",
     "normalize.css": "^7.0.0",
     "prop-types": "^15.6.0",
