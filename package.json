@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
+    "async": "^2.6.0",
     "bows": "^1.7.0",
     "classnames": "^2.2.5",
     "color": "^2.0.0",
@@ -20,11 +21,13 @@
     "modernizr": "^3.5.0",
     "normalize.css": "^7.0.0",
     "prop-types": "^15.6.0",
+    "qs": "^6.5.2",
     "radium": "^0.19.6",
     "react": "^16.0.0",
     "react-css-modules": "^4.7.1",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
+    "request": "^2.85.0",
     "xhr": "^2.4.0"
   },
   "devDependencies": {
@@ -45,6 +48,7 @@
     "css-loader": "^0.28.7",
     "escape-string-regexp": "^1.0.5",
     "eslint": "^4.9.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-import-resolver-webpack": "^0.8.3",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-classes": "^0.1.1",
@@ -61,6 +65,7 @@
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "postcss-loader": "^2.0.8",
+    "prettier": "^2.2.1",
     "strip-ansi": "^4.0.0",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2"
@@ -79,7 +84,6 @@
   "main": "index.js",
   "pre-commit": [
     "lint",
-    "validate",
     "test"
   ],
   "private": true,
@@ -91,7 +95,6 @@
     "build": "NODE_ENV=production webpack --bail",
     "lint": "eslint --ignore-path .gitignore .",
     "start": "hjs-dev-server",
-    "test": "npm run build",
-    "validate": "npm ls"
+    "test": "npm run build"
   }
 }

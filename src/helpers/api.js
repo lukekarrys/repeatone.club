@@ -2,7 +2,7 @@
 
 import xhr from 'xhr';
 
-const URI_BASE = 'https://wt-lukekarrys-gmail_com-0.sandbox.auth0-extend.com/repeatone-webtask';
+const URI_BASE = '/.netlify/functions/repeatone';
 const uri = (user) => `${URI_BASE}?user=${user}`;
 
 const SUCCESS = 200;
