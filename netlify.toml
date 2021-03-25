@@ -1,5 +1,5 @@
 [build]
-  publish = "build/"
+  publish = "public/"
   command = "npm run lint && npm run build"
   functions = "functions/"
 
