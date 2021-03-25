@@ -10,13 +10,15 @@ const modernizrVersion = require('modernizr/package').version;
 const isDev = process.env.NODE_ENV !== 'production';
 
 const DEFAULT_HASH_LENGTH = 8;
-const hashId = (data, hashLength) => crypto
-  .createHash('sha1')
-  .update(data)
-  .digest('hex')
-  .slice(0, hashLength || DEFAULT_HASH_LENGTH);
+const hashId = (data, hashLength) =>
+  crypto
+    .createHash('sha1')
+    .update(data)
+    .digest('hex')
+    .slice(0, hashLength || DEFAULT_HASH_LENGTH);
 
-const template = (ctx) => `
+const template = (ctx) =>
+  `
   <!doctype html>
   <html lang="en"${!ctx.isDev ? ` manifest="${ctx.manifestName}"` : ''}>
   <head>
@@ -33,7 +35,8 @@ const template = (ctx) => `
   <script src="/${ctx.main}"></script>
 `.replace(/\n\s*/gm, '');
 
-const manifest = (ctx) => `
+const manifest = (ctx) =>
+  `
   CACHE MANIFEST
   # ${ctx.id}
   ${ctx.indexName || ''}
@@ -47,61 +50,69 @@ const manifest = (ctx) => `
 `.replace(/^\s*/gm, '');
 
 const modernizr = (ctx, cb) => {
-  const modernizrFeatures = {'feature-detects': ['css/filters', 'css/fontface']};
-  const modernizrId = hashId(modernizrVersion + JSON.stringify(modernizrFeatures));
+  const modernizrFeatures = {
+    'feature-detects': ['css/filters', 'css/fontface'],
+  };
+  const modernizrId = hashId(
+    modernizrVersion + JSON.stringify(modernizrFeatures)
+  );
   const modernizrName = `modernizr.${ctx.isDev ? 'dev' : modernizrId}.js`;
 
   buildModernizr(
-    assign({minify: !ctx.isDev}, modernizrFeatures),
-    (modernizrResult) => cb({name: modernizrName, content: modernizrResult})
+    assign({ minify: !ctx.isDev }, modernizrFeatures),
+    (modernizrResult) => cb({ name: modernizrName, content: modernizrResult })
   );
 };
 
 const buildFiles = (context, done) => {
-  const templateContext = assign({
-    id: new Date().valueOf(),
-    indexName: isDev ? 'index.html' : '200.html',
-    manifestName: 'cache.appcache'
-  }, context);
+  const templateContext = assign(
+    {
+      id: new Date().valueOf(),
+      indexName: isDev ? 'index.html' : '200.html',
+      manifestName: 'cache.appcache',
+    },
+    context
+  );
 
   // Build modernizr and when its done, build the rest of the files
-  modernizr(
-    templateContext,
-    (options) => {
-      assign(templateContext, {modernizrName: options.name});
-      done(null, {
-        [templateContext.modernizrName]: options.content,
-        [templateContext.manifestName]: manifest(templateContext),
-        _redirects: '/*    /index.html   200',
-        'index.html': template(templateContext)
-      });
-    }
-  );
+  modernizr(templateContext, (options) => {
+    assign(templateContext, { modernizrName: options.name });
+    done(null, {
+      [templateContext.modernizrName]: options.content,
+      [templateContext.manifestName]: manifest(templateContext),
+      _redirects: '/*    /index.html   200',
+      'index.html': template(templateContext),
+    });
+  });
 };
 
-const mergeArrays = (a, b) => mergeWith({}, a, b, (objValue, srcValue) => {
-  if (Array.isArray(objValue)) return objValue.concat(srcValue);
-  return void 0;
-});
+const mergeArrays = (a, b) =>
+  mergeWith({}, a, b, (objValue, srcValue) => {
+    if (Array.isArray(objValue)) return objValue.concat(srcValue);
+    return void 0;
+  });
 
 const config = webpackConfig({
   isDev,
-  'in': 'src/main.js',
+  in: 'src/main.js',
   out: 'public',
   clearBeforeBuild: true,
-  output: {hash: true},
-  html: buildFiles
+  output: { hash: true },
+  html: buildFiles,
 });
 
 const replaceLoader = (match, options) => {
   config.module.rules.forEach((loader) => {
     if (loader && loader.use) {
-      const matchedIndex = loader.use.findIndex((usedLoader) => (usedLoader.loader || usedLoader) === match);
+      const matchedIndex = loader.use.findIndex(
+        (usedLoader) => (usedLoader.loader || usedLoader) === match
+      );
       const matchedLoader = loader.use[matchedIndex];
       if (matchedLoader) {
-        loader.use[matchedIndex] = typeof matchedLoader === 'string'
-          ? {loader: matchedLoader, options}
-          : mergeArrays(matchedLoader, {options});
+        loader.use[matchedIndex] =
+          typeof matchedLoader === 'string'
+            ? { loader: matchedLoader, options }
+            : mergeArrays(matchedLoader, { options });
       }
     }
   });
@@ -109,9 +120,9 @@ const replaceLoader = (match, options) => {
 
 // Happy, debuggable selectors in dev. Super compact selectors in prod.
 replaceLoader('css-loader', {
-  minimize: isDev ? false : {discardComments: {removeAll: true}},
+  minimize: isDev ? false : { discardComments: { removeAll: true } },
   modules: true,
-  localIdentName: `${isDev ? '[path][name]___[local]___' : ''}[hash:base64:5]`
+  localIdentName: `${isDev ? '[path][name]___[local]___' : ''}[hash:base64:5]`,
 });
 
 module.exports = config;

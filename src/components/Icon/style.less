@@ -4,8 +4,9 @@
   // strip out the relative part of the path
   // https://github.com/webpack/css-loader/issues/74#issuecomment-110745359
   // https://github.com/less/less.js/pull/2615
-  src:url('../Icon/fonts/icomoon.eot?-6uiqa3');
-  src:url('../Icon/fonts/icomoon.eot?#iefix-6uiqa3') format('embedded-opentype'),
+  src: url('../Icon/fonts/icomoon.eot?-6uiqa3');
+  src: url('../Icon/fonts/icomoon.eot?#iefix-6uiqa3')
+      format('embedded-opentype'),
     url('../Icon/fonts/icomoon.ttf?-6uiqa3') format('truetype'),
     url('../Icon/fonts/icomoon.woff?-6uiqa3') format('woff'),
     url('../Icon/fonts/icomoon.svg?-6uiqa3#icomoon') format('svg');
@@ -27,10 +28,14 @@
 
 .home {
   composes: icon;
-  &:before { content: "\e602"; }
+  &:before {
+    content: '\e602';
+  }
 }
 
 .github {
   composes: icon;
-  &:before { content: "\e600"; }
+  &:before {
+    content: '\e600';
+  }
 }

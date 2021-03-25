@@ -1,6 +1,6 @@
 'use strict';
 
-const {Image} = window;
+const { Image } = window;
 
 const loadImage = (src, cb) => {
   const image = new Image();

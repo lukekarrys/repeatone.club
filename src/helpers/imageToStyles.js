@@ -2,12 +2,12 @@
 
 import Color from 'color';
 import cssColors from 'colors.css';
-import {sortBy} from 'lodash';
+import { sortBy } from 'lodash';
 import bows from 'bows';
 import ColorThief from 'exports-loader?ColorThief!color-thief';
 import loadImage from './loadImage';
 
-const {Image} = window;
+const { Image } = window;
 const log = bows('base64ToColors');
 
 const first = (arr, n = 0) => arr[n];
@@ -18,14 +18,14 @@ const contrast = (rgb1, rgb2) => Color.rgb(rgb1).contrast(Color.rgb(rgb2));
 const rgbString = (rgb) => Color.rgb(rgb).string();
 
 const colorsToStyles = (c) => {
-  const {background, text, link, linkHover} = c;
+  const { background, text, link, linkHover } = c;
   return {
-    background: {backgroundColor: background},
-    text: {color: text},
+    background: { backgroundColor: background },
+    text: { color: text },
     link: {
       color: link,
-      ':hover': {color: linkHover}
-    }
+      ':hover': { color: linkHover },
+    },
   };
 };
 
@@ -33,10 +33,10 @@ const DEFAULT_STYLES = colorsToStyles({
   background: cssColors.gray,
   link: cssColors.black,
   text: cssColors.black,
-  linkHover: cssColors.black
+  linkHover: cssColors.black,
 });
 
-const imageToStyles = ({image, darkBg}) => {
+const imageToStyles = ({ image, darkBg }) => {
   const PALETTE_COLORS = 8;
   const palette = new ColorThief().getPalette(image, PALETTE_COLORS);
   const colors = sortBy(palette, luminosity);
@@ -53,22 +53,20 @@ const imageToStyles = ({image, darkBg}) => {
     background: rgbString(background),
     link: rgbString(link),
     linkHover: rgbString(linkHover),
-    text: rgbString(text)
+    text: rgbString(text),
   });
 };
 
 // Only for use with an already loaded image. Otherwise
 // ColorThief will throw errors.
-const imageToStylesSync = ({err, image, darkBg}) => {
+const imageToStylesSync = ({ err, image, darkBg }) => {
   let errMessage;
 
   if (err) {
     errMessage = err.message ? err.message : err;
-  }
-  else if (!image) {
+  } else if (!image) {
     errMessage = 'No image';
-  }
-  else if (!(image instanceof Image)) {
+  } else if (!(image instanceof Image)) {
     errMessage = 'image is not an Image';
   }
 
@@ -77,13 +75,13 @@ const imageToStylesSync = ({err, image, darkBg}) => {
     return DEFAULT_STYLES;
   }
 
-  return imageToStyles({image, darkBg});
+  return imageToStyles({ image, darkBg });
 };
 
 // Takes an image or a string and makes sure its loaded
 // and then returns the styles. Any error results in the return
 // of the default styles
-const loadImageToStyles = ({image, darkBg}, cb) => {
+const loadImageToStyles = ({ image, darkBg }, cb) => {
   if (!image) {
     return cb(null, imageToStylesSync(new Error('No image')));
   }
@@ -91,9 +89,9 @@ const loadImageToStyles = ({image, darkBg}, cb) => {
   const imageSrc = image instanceof Image ? image.src : image;
 
   return loadImage(imageSrc, (err, loadedImage) => {
-    cb(null, imageToStylesSync({darkBg, err, image: loadedImage}));
+    cb(null, imageToStylesSync({ darkBg, err, image: loadedImage }));
   });
 };
 
-export {loadImageToStyles as async};
-export {imageToStylesSync as sync};
+export { loadImageToStyles as async };
+export { imageToStylesSync as sync };

@@ -6,7 +6,6 @@ See if a last.fm user is listening to a song on repeat.
 
 ![screenshot](https://cldup.com/UjR_z73vH5.png)
 
-
 ## Usage
 
 ### Dev

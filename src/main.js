@@ -1,8 +1,8 @@
 'use strict';
 
 import React from 'react';
-import {render} from 'react-dom';
-import {Router, Switch, Route} from 'react-router-dom';
+import { render } from 'react-dom';
+import { Router, Switch, Route } from 'react-router-dom';
 import browserHistory from './helpers/history';
 import App from './components/App';
 import Landing from './pages/Landing';
@@ -11,14 +11,15 @@ import NotFound from './pages/NotFound';
 
 import './styles.less';
 
-render((
+render(
   <Router history={browserHistory}>
     <App>
       <Switch>
-        <Route exact path='/' component={Landing} />
-        <Route path='/:user' component={User} />
+        <Route exact path="/" component={Landing} />
+        <Route path="/:user" component={User} />
         <Route component={NotFound} />
       </Switch>
     </App>
-  </Router>
-), document.getElementById('root'));
+  </Router>,
+  document.getElementById('root')
+);

@@ -1,7 +1,7 @@
 'use strict';
 
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import Icon from '../Icon';
 
@@ -9,12 +9,12 @@ import Icon from '../Icon';
 export default class Footer extends Component {
   render() {
     return (
-      <footer styleName='root'>
-        <Link to='/'>
-          <Icon name='home'>Home</Icon>
+      <footer styleName="root">
+        <Link to="/">
+          <Icon name="home">Home</Icon>
         </Link>
-        <a href='https://github.com/lukekarrys/repeatone'>
-          <Icon name='github'>GitHub</Icon>
+        <a href="https://github.com/lukekarrys/repeatone">
+          <Icon name="github">GitHub</Icon>
         </a>
       </footer>
     );
